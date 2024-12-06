@@ -172,4 +172,178 @@ Firefox 133.0 (Linux x86_64) ERROR
 
 
 kushal@kusfedora2024:~/src/myhtml/StaleNews$ cd ~/src/myhtml/StaleNews/; time sh update.sh
+Fri Dec  6 11:11:50 AM EST 2024
+update.sh: line 9: cd: /home/kushal/source/angulareighteen/: No such file or directory
+0.40.1
+Installing latest LTS version.
+v22.12.0 is already installed.
+Now using node v22.12.0 (npm v10.9.0)
+v22.12.0
+10.9.0
+
+changed 1 package in 500ms
+Fri Dec  6 11:11:51 AM EST 2024
+Fri Dec  6 11:11:51 AM EST 2024
+yarn install v1.22.22
+info No lockfile found.
+[1/4] Resolving packages...
+warning karma-coverage-istanbul-reporter > istanbul-lib-source-maps > rimraf@2.7.1: Rimraf versions prior to v4 are no longer supported
+warning karma-coverage-istanbul-reporter > istanbul-lib-source-maps > rimraf > glob@7.2.3: Glob versions prior to v9 are no longer supported
+warning karma-coverage-istanbul-reporter > istanbul-lib-source-maps > rimraf > glob > inflight@1.0.6: This module is not supported, and leaks memory. Do not use it. Check out lru-cache if you want a good and tested way to coalesce async requests by a key value, which is much more comprehensive and powerful.
+warning karma > glob@7.2.3: Glob versions prior to v9 are no longer supported
+warning karma > rimraf@3.0.2: Rimraf versions prior to v4 are no longer supported
+warning karma > rimraf > glob@7.2.3: Glob versions prior to v9 are no longer supported
+[2/4] Fetching packages...
+[3/4] Linking dependencies...
+warning "@angular-devkit/build-angular > @vitejs/plugin-basic-ssl@1.1.0" has unmet peer dependency "vite@^3.0.0 || ^4.0.0 || ^5.0.0".
+warning "@angular-devkit/build-angular > @angular/build > @inquirer/confirm@5.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular-devkit/build-angular > @angular/build > @inquirer/confirm > @inquirer/type@3.0.1" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts@7.1.0" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/checkbox@4.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/input@4.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/editor@4.1.0" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/password@4.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/rawlist@4.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/expand@4.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/number@3.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/search@3.0.2" has unmet peer dependency "@types/node@>=18".
+warning "@angular/cli > @inquirer/prompts > @inquirer/select@4.0.2" has unmet peer dependency "@types/node@>=18".
+[4/4] Building fresh packages...
+success Saved lockfile.
+Done in 9.70s.
+
+real    0m9.820s
+user    0m3.018s
+sys	0m1.028s
+Fri Dec  6 11:12:01 AM EST 2024
+On branch master
+Changes not staged for commit:
+  (use "git add <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   README.md
+	modified:   src/app/app.component.spec.ts
+	modified:   src/app/app.component.ts
+	modified:   src/index.html
+
+no changes added to commit (use "git add" and/or "git commit -a")
+[master d808523] add all files
+ 4 files changed, 96 insertions(+), 583 deletions(-)
+From github.com:angularnineteen/angularnineteen.github.io
+ * branch            master     -> FETCH_HEAD
+Current branch master is up to date.
+Enumerating objects: 15, done.
+Counting objects: 100% (15/15), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (8/8), done.
+Writing objects: 100% (8/8), 1.33 KiB | 1.33 MiB/s, done.
+Total 8 (delta 5), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (5/5), completed with 5 local objects.
+To github.com:angularnineteen/angularnineteen.github.io.git
+   651604f..d808523  master -> master
+yarn install v1.22.22
+[1/4] Resolving packages...
+success Already up-to-date.
+Done in 0.17s.
+yarn run v1.22.22
+$ ng update
+Using package manager: yarn
+Collecting installed dependencies...
+Found 25 dependencies.
+    We analyzed your package.json and everything seems to be in order. Good work!
+Done in 0.90s.
+yarn run v1.22.22
+$ ng build
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+main-CTRIPDWL.js    | main          | 182.73 kB |                49.55 kB
+styles-5INURTSO.css | styles        |   0 bytes |                 0 bytes
+
+                    | Initial total | 182.73 kB |                49.55 kB
+
+Application bundle generation complete. [1.064 seconds]
+
+Output location: /home/kushal/src/myhtml/StaleNews/docs
+
+Done in 1.47s.
+On branch master
+Changes not staged for commit:
+  (use "git add/rm <file>..." to update what will be committed)
+  (use "git restore <file>..." to discard changes in working directory)
+	modified:   docs/index.html
+	deleted:    docs/main-TWJD5ZBX.js
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	docs/main-CTRIPDWL.js
+
+no changes added to commit (use "git add" and/or "git commit -a")
+warning: in the working copy of 'docs/3rdpartylicenses.txt', CRLF will be replaced by LF the next time Git touches it
+[master 5ab1be0] add all files
+ 2 files changed, 3 insertions(+), 3 deletions(-)
+ rename docs/{main-TWJD5ZBX.js => main-CTRIPDWL.js} (99%)
+From github.com:angularnineteen/angularnineteen.github.io
+ * branch            master     -> FETCH_HEAD
+Current branch master is up to date.
+Enumerating objects: 8, done.
+Counting objects: 100% (8/8), done.
+Delta compression using up to 16 threads
+Compressing objects: 100% (5/5), done.
+Writing objects: 100% (5/5), 54.48 KiB | 18.16 MiB/s, done.
+Total 5 (delta 3), reused 0 (delta 0), pack-reused 0 (from 0)
+remote: Resolving deltas: 100% (3/3), completed with 3 local objects.
+To github.com:angularnineteen/angularnineteen.github.io.git
+   d808523..5ab1be0  master -> master
+yarn run v1.22.22
+$ ng test
+✔ Browser application bundle generation complete.
+06 12 2024 11:12:10.689:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+06 12 2024 11:12:10.689:INFO [launcher]: Launching browsers FirefoxHeadless with concurrency unlimited
+06 12 2024 11:12:10.692:INFO [launcher]: Starting browser Firefox
+06 12 2024 11:12:11.608:INFO [Firefox 133.0 (Linux x86_64)]: Connected on socket 7wNvLlNCuzt8pVt2AAAB with id 15888944
+Firefox 133.0 (Linux x86_64): Executed 3 of 3 SUCCESS (0.029 secs / 0.02 secs)
+TOTAL: 3 SUCCESS
+Done in 3.32s.
+yarn run v1.22.22
+$ ng update @angular/core @angular/cli
+Using package manager: yarn
+Collecting installed dependencies...
+Found 25 dependencies.
+Fetching dependency metadata from registry...
+Package '@angular/core' is already up to date.
+Package '@angular/cli' is already up to date.
+Done in 0.84s.
+On branch master
+nothing to commit, working tree clean
+From github.com:angularnineteen/angularnineteen.github.io
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+Everything up-to-date
+Latest version:     1.0.30001687
+Installed version:  1.0.30001687
+caniuse-lite is up to date
+caniuse-lite has been successfully updated
+
+No target browser changes
+On branch master
+nothing to commit, working tree clean
+On branch master
+nothing to commit, working tree clean
+From github.com:angularnineteen/angularnineteen.github.io
+ * branch            master     -> FETCH_HEAD
+Already up to date.
+Everything up-to-date
+* remote origin
+  Fetch URL: git@github.com:angularnineteen/angularnineteen.github.io.git
+  Push  URL: git@github.com:angularnineteen/angularnineteen.github.io.git
+  HEAD branch: master
+  Remote branch:
+    master tracked
+  Local ref configured for 'git push':
+    master pushes to master (up to date)
+Fri Dec  6 11:12:17 AM EST 2024
+
+real	0m26.962s
+user	0m13.572s
+sys	0m3.700s
+kushal@kusfedora2024:~/src/myhtml/StaleNews$ 
+kushal@kusfedora2024:~/src/myhtml/StaleNews$ cd ~/src/myhtml/StaleNews/; time sh update.sh
 ```
