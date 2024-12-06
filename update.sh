@@ -6,7 +6,7 @@ date
 . ~/.nvm/nvm.sh
 
 # Navigate to the project directory
-cd ~/source/angulareighteen/
+cd ~/src/myhtml/StaleNews/
 
 # Check and install Node Version Manager (NVM)
 nvm --version
