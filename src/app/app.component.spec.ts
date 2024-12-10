@@ -28,4 +28,11 @@ describe('AppComponent', () => {
     const compiled = fixture.nativeElement as HTMLElement;
     expect(compiled.querySelector('h1')?.textContent).toContain('Welcome to Stale News');
   });
+
+  it('should have a paragraph explaining what stale news is', () => {
+    const fixture = TestBed.createComponent(AppComponent);
+    fixture.detectChanges();
+    const compiled = fixture.nativeElement as HTMLElement;
+    expect(compiled.querySelector('#what-is-stale-news')).toBeTruthy();
+  });
 });
