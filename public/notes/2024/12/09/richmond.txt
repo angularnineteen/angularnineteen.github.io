@@ -1,0 +1,47 @@
+C# .Net DeveloperNational Computing Group - Richmond, VA 23219
+
+Description:4161
+
+    Length of assignment: 1 year+
+
+• Quick description of the role or project story (What this role will be doing): The individual in this position will provide developer support for the applications used by the client's Information Technology and Corporate Services group, as well as assist with support within the client's portfolio across a wide variety of applications and technologies. The selected candidate must be well versed in all phases of application development.
+
+    Supports .NET web applications and batch processes
+    Utilizes scripting languages to assist application data workflow and replace manual processes
+    Develops code changes based off of technical specifications.
+    Support of applications and infrastructure in both Windows and Linux environments.
+    Responsible for working in multi-platform server environments on multi-project assignments.
+    Performs unit testing of application changes and works with analysts with integration testing.
+    7+ years experience in developing applications in .NET and scripting language platforms, application change management and application unit testing is required
+    5+ years experience troubleshooting and deploying bug fixes
+    Experience writing and modifying SQL scripts in both SQL Server and Oracle databases
+    Experience working with Powershell, Azure DevOps, Microsoft Power Suite and Java
+    Experience developing and supporting IT Security Policy Portal and Common Functions applications.
+    Experience working with the following technologies: Windows/IIS servers, Citrix, WebLogic, Oracle and SQL Server databases, MS Access, RedHat Linux, FTP/SFTP, XML, HTML, Web services, Distributed Computing, Active Directory
+    Experience developing standards and best practices for development teams
+
+• What are the top (at least 3 if possible) “must have” skill sets (technical/functional) which are required?
+1. Visual Studio C Sharp Development
+2. SQL Development
+3. Scripting / Power App Development
+
+    What are the top “nice to have” skill sets? Communication skills
+
+Job Types: Full-time, Contract
+
+Pay: $60.00 - $70.00 per hour
+
+Benefits:
+
+    401(k)
+    Health insurance
+
+Schedule:
+
+    Monday to Friday
+
+Ability to Relocate:
+
+    Richmond, VA 23219: Relocate before starting work (Required)
+
+Work Location: In person
