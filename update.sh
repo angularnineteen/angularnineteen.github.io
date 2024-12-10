@@ -116,7 +116,7 @@ git commit --message "add all files" --message "update from terminal"
 git pull --rebase origin master
 
 # Push the changes to the remote repository
-git push origin master
+git push origin --all
 
 # Show the remote repository details
 git remote show origin
