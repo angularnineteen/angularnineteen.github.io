@@ -24,7 +24,7 @@ The worrying thing about that quote is that the philosopher Edmund Burke issued 
   People will not look forward to posterity, who never look backward to their ancestors. 
 ]
 
-we seem to be having trouble learning an important lesson here. 
+We seem to be having trouble learning an important lesson here. 
 When we learn a technology lesson, we tend not to forget it. 
 The invention of the integrated circuit in 1959 was a breakthrough that launched a new paradigm in modern computing. 
 This isn't the kind of thing we forget, finding ourselves accidentally going back to making computers with vacuum tubes. 
