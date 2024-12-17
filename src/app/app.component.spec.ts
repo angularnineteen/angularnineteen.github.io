@@ -1,5 +1,3 @@
-import { Component } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.component';
 import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';

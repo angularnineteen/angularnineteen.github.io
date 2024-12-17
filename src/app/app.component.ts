@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {StaleNewsCardComponent} from './stale-news-card/stale-news-card.component';
+import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.component';
+import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 
 @Component({
   selector: 'app-root',
+  standalone: true,
   imports: [RouterOutlet, StaleNewsCardComponent],
   template: `
     <h1>Welcome to {{title}}!</h1>
@@ -28,23 +30,7 @@ import {StaleNewsCardComponent} from './stale-news-card/stale-news-card.componen
     </app-stale-news-card>
     <router-outlet></router-outlet>
   `,
-  styles: [
-    `
-      h1 {
-        color: #2c3e50;
-        font-family: Arial, sans-serif;
-      }
-      #what-is-stale-news {
-        font-size: 1.2em;
-        color: #34495e;
-        margin: 20px 0;
-      }
-      router-outlet {
-        display: block;
-        margin-top: 20px;
-      }
-    `,
-  ],
+  styles: [/* Your styles here */]
 })
 export class AppComponent {
   title = 'Stale News';
