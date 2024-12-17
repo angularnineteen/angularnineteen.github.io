@@ -12,3 +12,4 @@ describe('StaleNewsComponent', () => {
       providers: [provideExperimentalZonelessChangeDetection()]
     }).compileComponents();
   });
+});
