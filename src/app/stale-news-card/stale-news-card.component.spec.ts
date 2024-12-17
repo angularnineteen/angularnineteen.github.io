@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { StaleNewsCardComponent } from './stale-news-card.component';
+import { CommonModule } from '@angular/common'; // Import CommonModule
+import { By } from '@angular/platform-browser';
 
 describe('StaleNewsCardComponent', () => {
   let component: StaleNewsCardComponent;
@@ -8,9 +9,10 @@ describe('StaleNewsCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StaleNewsCardComponent]
+      imports: [CommonModule], // Add CommonModule here
+      declarations: [StaleNewsCardComponent] // Declare the component
     })
-    .compileComponents();
+      .compileComponents();
 
     fixture = TestBed.createComponent(StaleNewsCardComponent);
     component = fixture.componentInstance;
@@ -20,4 +22,6 @@ describe('StaleNewsCardComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  // Add more tests as needed
 });
