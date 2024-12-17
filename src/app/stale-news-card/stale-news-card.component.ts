@@ -13,8 +13,11 @@ import { Component, Input } from '@angular/core';
       <p><strong>Summary:</strong> {{ summary }}</p>
       <div>
         <strong>Details:</strong>
-        <div *ngFor="let paragraph of longFormText">
-          <p>{{ paragraph }}</p>
+        <!-- <div *ngFor="let paragraph of longFormText"> -->
+        <div>
+          @for (item of longFormText; track item; let idx = $index, e = $even) {
+            <p>Item #{{ idx }}: {{ item }}</p>
+          }
         </div>
       </div>
     </div>
