@@ -9998,3 +9998,306 @@ real	0m0.176s
 user	0m0.005s
 sys	0m0.013s
 kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ ip addr; sudo echo "Current date and time: $(date)"; free -h; df -h; time ping -c 2 pcna.duckdns.org; time ping -c 2 kalimati.duckdns.org; time ping -c 2 colorado.duckdns.org; sudo echo "Current date and time: $(date)"; time flatpak update -y; time sudo dnf offline-upgrade download -y && time sudo dnf offline-upgrade reboot;
+
+
+
+
+
+
+
+
+
+
+
+index.js:57Initial chunk files | Names         | Raw size
+main.js             | main          |  7.19 kB |
+styles.css          | styles        | 95 bytes |
+
+                    | Initial total |  7.29 kB
+
+Application bundle generation complete. [1.172 seconds]
+index.js:54▲ [WARNING] NG8103: The `*ngFor` directive was used in the template, but neither the `NgFor` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @for or make sure that either the `NgFor` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:16:14: 16 │ <div *ngFor="let paragraph of longFormText"> ╵ ~~~~~
+(anonymous function)                      	index.js:54
+next                                      	Observable.ts:319
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	map.ts:58
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	Subject.ts:68
+errorContext                              	errorContext.ts:29
+Subject.next                              	Subject.ts:61
+(anonymous function)                      	logger.js:30
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	map.ts:58
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	Subject.ts:68
+errorContext                              	errorContext.ts:29
+Subject.next                              	Subject.ts:61
+next                                      	logger.js:89
+next                                      	schedule-by-name.js:51
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	mergeInternals.ts:85
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	map.ts:58
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	filter.ts:72
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	switchMap.ts:115
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	innerFrom.ts:90
+processTicksAndRejections                 	task_queues:105
+Async call from Promise.then
+(anonymous function)                      	innerFrom.ts:87
+Observable._trySubscribe                  	Observable.ts:244
+(anonymous function)                      	Observable.ts:234
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	switchMap.ts:109
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	innerFrom.ts:90
+processTicksAndRejections                 	task_queues:105
+Async call from Promise.then
+(anonymous function)                      	innerFrom.ts:87
+Observable._trySubscribe                  	Observable.ts:244
+(anonymous function)                      	Observable.ts:234
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	switchMap.ts:100
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	filter.ts:68
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	map.ts:54
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+doInnerSub                                	mergeInternals.ts:71
+outerNext                                 	mergeInternals.ts:53
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	Subject.ts:68
+errorContext                              	errorContext.ts:29
+Subject.next                              	Subject.ts:61
+outboundBus.pipe.state                    	simple-scheduler.js:256
+(anonymous function)                      	tap.ts:189
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	filter.ts:72
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	mergeInternals.ts:85
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	mergeInternals.ts:85
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	switchMap.ts:115
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	switchMap.ts:115
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	mergeInternals.ts:85
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	Subject.ts:68
+errorContext                              	errorContext.ts:29
+Subject.next                              	Subject.ts:61
+ReplaySubject.next                        	ReplaySubject.ts:65
+next                                      	share.ts:225
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	mergeInternals.ts:85
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	map.ts:58
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+channelSubject.subscribe.subject.next.kind	create-job-handler.js:84
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	Subject.ts:68
+errorContext                              	errorContext.ts:29
+Subject.next                              	Subject.ts:61
+log                                       	create-builder.js:31
+(anonymous function)                      	create-builder.js:67
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	Subject.ts:68
+errorContext                              	errorContext.ts:29
+Subject.next                              	Subject.ts:61
+log                                       	logger.js:86
+warn                                      	logger.js:98
+logMessages                               	utils.js:353
+processTicksAndRejections                 	task_queues:105
+Async call from await
+runEsBuildBuildAction                     	build-action.js:66
+processTicksAndRejections                 	task_queues:105
+Async call from await
+buildApplicationInternal                  	index.js:67
+Async call from await
+serveWithVite                             	vite-server.js:135
+Async call from await
+processTicksAndRejections                 	task_queues:105
+Async call from await
+processTicksAndRejections                 	task_queues:105
+Async call from await
+(anonymous function)                      	innerFrom.js:172
+step                                      	innerFrom.js:33
+(anonymous function)                      	innerFrom.js:14
+(anonymous function)                      	innerFrom.js:8
+__awaiter                                 	innerFrom.js:4
+process                                   	innerFrom.js:164
+(anonymous function)                      	innerFrom.ts:114
+Observable._trySubscribe                  	Observable.ts:244
+(anonymous function)                      	Observable.ts:234
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	switchMap.ts:109
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	innerFrom.ts:90
+processTicksAndRejections                 	task_queues:105
+Async call from Promise.then
+(anonymous function)                      	innerFrom.ts:87
+Observable._trySubscribe                  	Observable.ts:244
+(anonymous function)                      	Observable.ts:234
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	defer.ts:55
+Observable._trySubscribe                  	Observable.ts:244
+(anonymous function)                      	Observable.ts:234
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	switchMap.ts:100
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	switchMap.ts:109
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	innerFrom.ts:90
+processTicksAndRejections                 	task_queues:105
+Async call from Promise.then
+(anonymous function)                      	innerFrom.ts:87
+Observable._trySubscribe                  	Observable.ts:244
+(anonymous function)                      	Observable.ts:234
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	defer.ts:55
+Observable._trySubscribe                  	Observable.ts:244
+(anonymous function)                      	Observable.ts:234
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	switchMap.ts:100
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	defaultIfEmpty.ts:43
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+(anonymous function)                      	tap.ts:185
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+mergeInternals                            	mergeInternals.ts:136
+(anonymous function)                      	mergeMap.ts:95
+(anonymous function)                      	lift.ts:24
+(anonymous function)                      	Observable.ts:226
+errorContext                              	errorContext.ts:29
+Observable.subscribe                      	Observable.ts:220
+onInput                                   	create-builder.js:164
+(anonymous function)                      	create-builder.js:57
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	Subject.ts:68
+errorContext                              	errorContext.ts:29
+Subject.next                              	Subject.ts:61
+ReplaySubject.next                        	ReplaySubject.ts:65
+next                                      	share.ts:225
+ConsumerObserver.next                     	Subscriber.ts:161
+Subscriber._next                          	Subscriber.ts:119
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	mergeInternals.ts:85
+OperatorSubscriber._this._next            	OperatorSubscriber.ts:70
+Subscriber.next                           	Subscriber.ts:75
+(anonymous function)                      	innerFrom.ts:90
+index.js:57Watch mode enabled. Watching for file changes...
+index.js:57NOTE: Raw file sizes do not reflect development server per-request transformations.
+index.js:57Re-optimizing dependencies because lockfile has changed
+index.js:57  ➜  Local:   http://localhost:4200/
+index.js:57  ➜  press h + enter to show help
+index.js:57Application bundle generation failed. [0.115 seconds]
+index.js:54✘ [ERROR] NG5002: Assigning animation triggers via @prop="exp" attributes with an expression is invalid. Use property bindings (e.g. [@prop]="exp") or use an attribute without a value (e.g. @prop) instead. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:16:13: 16 │ <div @for="let paragraph of longFormText"> ╵ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ✘ [ERROR] NG5002: Parser Error: Unexpected token let at column 1 in [let paragraph of longFormText] in /home/kushal/src/myhtml/angularnineteen.github.io/src/app/stale-news-card/stale-news-card.component.ts@15:19 [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:16:19: 16 │ <div @for="let paragraph of longFormText"> ╵ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ ✘ [ERROR] NG5002: Parser Error: Unexpected token let at column 1 in [let paragraph of longFormText] in /home/kushal/src/myhtml/angularnineteen.github.io/src/app/stale-news-card/stale-news-card.component.ts@15:19 [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:17:13: 17 │ <p>{{ paragraph }}</p> ╵ ~~~~~~~~~~~~~~~ ✘ [ERROR] NG9: Property 'paragraph' does not exist on type 'StaleNewsCardComponent'. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:17:16: 17 │ <p>{{ paragraph }}</p> ╵ ~~~~~~~~~
+index.js:57Initial chunk files | Names         | Raw size
+main.js             | main          |  7.19 kB |
+styles.css          | styles        | 95 bytes |
+
+                    | Initial total |  7.29 kB
+
+Application bundle generation complete. [0.098 seconds]
+index.js:54▲ [WARNING] NG8103: The `*ngFor` directive was used in the template, but neither the `NgFor` directive nor the `CommonModule` was imported. Use Angular's built-in control flow @for or make sure that either the `NgFor` directive or the `CommonModule` is included in the `@Component.imports` array of this component. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:16:14: 16 │ <div *ngFor="let paragraph of longFormText"> ╵ ~~~~~
+index.js:57Application bundle generation failed. [0.054 seconds]
+index.js:54✘ [ERROR] NG5002: Unexpected closing block. The block may have been closed earlier. If you meant to write the } character, you should use the "&#125;" HTML entity instead. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:17:79: 17 │ ...or (paragraph of paragraphs) { if (paragraph.trim().length > 0) }> ╵ ^
+index.js:57Application bundle generation failed. [0.058 seconds]
+index.js:54✘ [ERROR] NG5002: @for loop must have a "track" expression [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:18:10: 18 │ @for (paragraph of paragraphs) { ╵ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+index.js:57Application bundle generation failed. [0.055 seconds]
+index.js:54✘ [ERROR] TS1003: Identifier expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1141: String literal expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1109: Expression expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:28: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~ ✘ [ERROR] TS1005: '(' expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:32: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] TS2304: Cannot find name 'from'. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] Expected string but found ";" src/app/stale-news-card/stale-news-card.component.ts:2:34: 2 │ import { Component, Input, } from ; ╵ ^
+index.js:57Application bundle generation failed. [0.039 seconds]
+index.js:54✘ [ERROR] TS1003: Identifier expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1141: String literal expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1109: Expression expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:28: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~ ✘ [ERROR] TS1005: '(' expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:32: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] TS2304: Cannot find name 'from'. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] Expected string but found ";" src/app/stale-news-card/stale-news-card.component.ts:2:34: 2 │ import { Component, Input, } from ; ╵ ^
+index.js:57Application bundle generation failed. [0.035 seconds]
+index.js:54✘ [ERROR] TS1003: Identifier expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1141: String literal expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1109: Expression expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:28: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~ ✘ [ERROR] TS1005: '(' expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:32: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] TS2304: Cannot find name 'from'. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] Expected string but found ";" src/app/stale-news-card/stale-news-card.component.ts:2:34: 2 │ import { Component, Input, } from ; ╵ ^
+index.js:57Application bundle generation failed. [0.031 seconds]
+index.js:54✘ [ERROR] TS1003: Identifier expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1141: String literal expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:27: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1109: Expression expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:28: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~ ✘ [ERROR] TS1005: '(' expected. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:32: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ^ ✘ [ERROR] TS1434: Unexpected keyword or identifier. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] TS2304: Cannot find name 'from'. [plugin angular-compiler] src/app/stale-news-card/stale-news-card.component.ts:1:34: 1 │ import { Component, Input, @for } from '@angular/core'; ╵ ~~~~ ✘ [ERROR] Expected string but found ";" src/app/stale-news-card/stale-news-card.component.ts:2:34: 2 │ import { Component, Input, } from ; ╵ ^
+index.js:57Initial chunk files | Names         | Raw size
+main.js             | main          |  7.21 kB |
+styles.css          | styles        | 95 bytes |
+
+                    | Initial total |  7.31 kB
+
+Application bundle generation complete. [0.086 seconds]
+index.js:57Page reload sent to client(s).
+index.js:57Initial chunk files | Names | Raw size
+main.js             | main  |  7.35 kB |
+
+Application bundle generation complete. [0.076 seconds]
+index.js:57Page reload sent to client(s).
+index.js:57Initial chunk files | Names | Raw size
+main.js             | main  |  7.31 kB |
+
+Application bundle generation complete. [0.052 seconds]
+index.js:57Page reload sent to client(s).
+index.js:57Initial chunk files | Names | Raw size
+main.js             | main  |  7.21 kB |
+
+Application bundle generation complete. [0.053 seconds]
+index.js:57Page reload sent to client(s).
