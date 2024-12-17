@@ -30,7 +30,10 @@ import { provideExperimentalZonelessChangeDetection } from '@angular/core';
     </app-stale-news-card>
     <router-outlet></router-outlet>
   `,
-  styles: [/* Your styles here */]
+  styles: [
+    
+
+  ]
 })
 export class AppComponent {
   title = 'Stale News';
