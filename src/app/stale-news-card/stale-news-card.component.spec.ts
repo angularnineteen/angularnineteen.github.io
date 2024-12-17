@@ -1,7 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StaleNewsCardComponent } from './stale-news-card.component';
 import { CommonModule } from '@angular/common'; // Import CommonModule
-import { By } from '@angular/platform-browser';
 
 describe('StaleNewsCardComponent', () => {
   let component: StaleNewsCardComponent;
@@ -9,8 +8,7 @@ describe('StaleNewsCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule], // Add CommonModule here
-      declarations: [StaleNewsCardComponent] // Declare the component
+      imports: [CommonModule, StaleNewsCardComponent], // Import the standalone component
     })
       .compileComponents();
 
