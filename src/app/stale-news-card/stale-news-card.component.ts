@@ -8,7 +8,11 @@ import { Component } from '@angular/core';
       stale-news-card works!
     </p>
   `,
-  styles: ``
+  styles: `
+    p {
+      border: 1px solid red;
+    }
+  `
 })
 export class StaleNewsCardComponent {
 
