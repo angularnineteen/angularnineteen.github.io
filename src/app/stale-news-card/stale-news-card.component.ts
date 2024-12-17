@@ -1,4 +1,4 @@
-import { Component, Input, @for } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
@@ -15,10 +15,8 @@ import { Component, Input, @for } from '@angular/core';
         <strong>Details:</strong>
         <!-- <div *ngFor="let paragraph of longFormText"> -->
         <div>
-          @for (item of longFormText; track item) {
-            <p>{{ item }}</p>
-          } @empty {
-            <li>There are no items.</li>
+          @for (item of longFormText; track item; let idx = $index, e = $even) {
+            Item #{{ idx }}: {{ item }}
           }
         </div>
       </div>
