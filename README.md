@@ -1109,7 +1109,7 @@ kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ cd ~/src/myhtml/ang
 ```
 
 ```
-kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ ng --version
+rc/myhtml/angularnineteen.github.io$ ng --version
 19.0.5
 kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ time yarn run ng --version
 yarn run v1.22.22
@@ -1130,5 +1130,43 @@ Done in 0.46s.
 real    0m0.564s
 user    0m0.468s
 sys     0m0.141s
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ time yarn run ng version
+yarn run v1.22.22
+$ ng version
+
+     _                      _                 ____ _     ___
+    / \   _ __   __ _ _   _| | __ _ _ __     / ___| |   |_ _|
+   / △ \ | '_ \ / _` | | | | |/ _` | '__|   | |   | |    | |
+  / ___ \| | | | (_| | |_| | | (_| | |      | |___| |___ | |
+ /_/   \_\_| |_|\__, |\__,_|_|\__,_|_|       \____|_____|___|
+                |___/
+    
+
+Angular CLI: 19.0.5
+Node: 22.12.0
+Package Manager: yarn 1.22.22
+OS: linux x64
+
+Angular: 19.0.4
+... animations, common, compiler, compiler-cli, core, forms
+... platform-browser, platform-browser-dynamic, router
+
+Package                         Version
+---------------------------------------------------------
+@angular-devkit/architect       0.1900.5
+@angular-devkit/build-angular   19.0.5
+@angular-devkit/core            19.0.5
+@angular-devkit/schematics      19.0.5
+@angular/cli                    19.0.5
+@schematics/angular             19.0.5
+rxjs                            7.8.1
+typescript                      5.6.3
+zone.js                         0.15.0
+    
+Done in 0.28s.
+
+real    0m0.376s
+user    0m0.281s
+sys     0m0.136s
 kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ 
 ```
