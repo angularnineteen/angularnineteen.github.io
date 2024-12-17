@@ -9,7 +9,7 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, AppComponent], // Add CommonModule here
+      imports: [CommonModule, AppComponent, StaleNewsCardComponent], // Import the standalone component
       providers: [provideExperimentalZonelessChangeDetection()]
     }).compileComponents();
   });
