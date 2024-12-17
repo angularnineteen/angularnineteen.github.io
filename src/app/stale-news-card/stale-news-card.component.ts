@@ -14,8 +14,10 @@ import { Component, Input } from '@angular/core';
       <div>
         <strong>Details:</strong>
         <!-- <div *ngFor="let paragraph of longFormText"> -->
-        <div @for (paragraph of paragraphs) { if (paragraph.trim().length > 0) }>
-          <p>{{ paragraph }}</p>
+        <div>
+          @for (paragraph of paragraphs) {
+            <p>{{ paragraph }}</p>
+          }
         </div>
       </div>
     </div>
