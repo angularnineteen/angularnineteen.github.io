@@ -11,6 +11,7 @@ import { RouterOutlet } from '@angular/router';
       There is even more we don't get to read at all.
       Stale News is here so you can read old news.
     </p>
+    <stale-news-card></stale-news-card> <!-- Use the selector of the new component -->
     <router-outlet></router-outlet>
   `,
   styles: [
