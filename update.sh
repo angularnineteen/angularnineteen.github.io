@@ -8,6 +8,8 @@ date
 # Navigate to the project directory
 cd ~/src/myhtml/angularnineteen.github.io/
 
+git pull --rebase origin master --strategy-option=theirs
+
 # Check and install Node Version Manager (NVM)
 nvm --version
 nvm install --lts
@@ -47,7 +49,7 @@ git add .
 git commit --message "add all files" --message "update from terminal"
 
 # Pull the latest changes and rebase
-git pull --rebase origin master
+git pull --rebase origin master --strategy-option=theirs
 
 # Push the changes to the remote repository
 git push origin master
