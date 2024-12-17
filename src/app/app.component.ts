@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import {StaleNewsCardComponent} from './stale-news-card/stale-news-card.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [RouterOutlet, StaleNewsCardComponent],
   template: `
     <h1>Welcome to {{title}}!</h1>
     <p id="what-is-stale-news">
@@ -11,7 +12,7 @@ import { RouterOutlet } from '@angular/router';
       There is even more we don't get to read at all.
       Stale News is here so you can read old news.
     </p>
-    <stale-news-card></stale-news-card> <!-- Use the selector of the new component -->
+    <app-stale-news-card></app-stale-news-card>
     <router-outlet></router-outlet>
   `,
   styles: [
