@@ -1107,3 +1107,28 @@ Firefox 133.0 (Linux x86_64) ERROR
 ^C^C
 kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ cd ~/src/myhtml/angularnineteen.github.io/; time sh /home/kushal/src/myhtml/angularnineteen.github.io/update.sh
 ```
+
+```
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ ng --version
+19.0.5
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ time yarn run ng --version
+yarn run v1.22.22
+$ ng --version
+19.0.5
+Done in 0.21s.
+
+real    0m0.309s
+user    0m0.251s
+sys     0m0.106s
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ time yarn run ng generate component staleNewsCard
+yarn run v1.22.22
+$ ng generate component staleNewsCard
+CREATE src/app/stale-news-card/stale-news-card.component.spec.ts (643 bytes)
+CREATE src/app/stale-news-card/stale-news-card.component.ts (229 bytes)
+Done in 0.46s.
+
+real    0m0.564s
+user    0m0.468s
+sys     0m0.141s
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ 
+```
