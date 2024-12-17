@@ -15,8 +15,10 @@ import { Component, Input, @for } from '@angular/core';
         <strong>Details:</strong>
         <!-- <div *ngFor="let paragraph of longFormText"> -->
         <div>
-          @for (paragraph of paragraphs) {
-            <p>{{ paragraph }}</p>
+          @for (item of longFormText; track item) {
+            <p>{{ item }}</p>
+          } @empty {
+            <li>There are no items.</li>
           }
         </div>
       </div>
