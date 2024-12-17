@@ -13,7 +13,7 @@ import { Component, Input } from '@angular/core';
       <p><strong>Summary:</strong> {{ summary }}</p>
       <div>
         <strong>Details:</strong>
-        <div @for="let paragraph of longFormText">
+        <div *ngFor="let paragraph of longFormText">
           <p>{{ paragraph }}</p>
         </div>
       </div>
