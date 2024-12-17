@@ -6,11 +6,11 @@ import { Component, Input } from '@angular/core';
     <div class="card">
       <h2>{{ title }}</h2>
       <h3>{{ subtitle }}</h3>
-      <p><strong>Published on:</strong> {{ originalPublicationDate }}</p>
-      <p><strong>Author(s):</strong> {{ authors.join(', ') }}</p>
-      <p><strong>Canonical URL:</strong> <a [href]="canonicalUrl" target="_blank">{{ canonicalUrl }}</a></p>
-      <p><strong>Republished on:</strong> {{ republishDate }}</p>
-      <p><strong>Summary:</strong> {{ summary }}</p>
+      <p><strong>Published on: </strong> {{ originalPublicationDate }}</p>
+      <p><strong>Author(s): </strong> {{ authors.join(', ') }}</p>
+      <p><strong>Canonical URL: </strong> <a [href]="canonicalUrl" target="_blank">{{ canonicalUrl }}</a></p>
+      <p><strong>Republished on: </strong> {{ republishDate }}</p>
+      <p><strong>Summary: </strong> {{ summary }}</p>
       <div>
         <strong>Details:</strong>
         <!-- <div *ngFor="let paragraph of longFormText"> -->
