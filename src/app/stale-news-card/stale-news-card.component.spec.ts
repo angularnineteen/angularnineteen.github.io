@@ -14,7 +14,6 @@ describe('StaleNewsCardComponent', () => {
 
     fixture = TestBed.createComponent(StaleNewsCardComponent);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -23,35 +22,35 @@ describe('StaleNewsCardComponent', () => {
 
   it('should display the title', () => {
     component.title = 'Test Title';
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const titleElement = fixture.debugElement.query(By.css('h2'));
     expect(titleElement.nativeElement.textContent).toContain('Test Title');
   });
 
   it('should display the subtitle', () => {
     component.subtitle = 'Test Subtitle';
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const subtitleElement = fixture.debugElement.query(By.css('h3'));
     expect(subtitleElement.nativeElement.textContent).toContain('Test Subtitle');
   });
 
   it('should display the original publication date', () => {
     component.originalPublicationDate = '2023-01-01';
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const dateElement = fixture.debugElement.query(By.css('p')).nativeElement;
     expect(dateElement.textContent).toContain('Published on: 2023-01-01');
   });
 
   it('should display the authors', () => {
     component.authors = ['Author One', 'Author Two'];
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const authorsElement = fixture.debugElement.query(By.css('p')).nativeElement;
     expect(authorsElement.textContent).toContain('Author(s): Author One, Author Two');
   });
 
   it('should display the canonical URL', () => {
     component.canonicalUrl = 'https://example.com/article';
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const urlElement = fixture.debugElement.query(By.css('a')).nativeElement;
     expect(urlElement.textContent).toContain('https://example.com/article');
     expect(urlElement.getAttribute('href')).toBe('https://example.com/article');
@@ -59,14 +58,14 @@ describe('StaleNewsCardComponent', () => {
 
   it('should display the republish date', () => {
     component.republishDate = '2023-02-01';
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const republishElement = fixture.debugElement.query(By.css('p')).nativeElement;
     expect(republishElement.textContent).toContain('Republished on: 2023-02-01');
   });
 
   it('should display the summary', () => {
     component.summary = 'This is a summary of the article.';
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const summaryElement = fixture.debugElement.query(By.css('p')).nativeElement;
     expect(summaryElement.textContent).toContain('Summary: This is a summary of the article.');
   });
@@ -77,7 +76,7 @@ describe('StaleNewsCardComponent', () => {
       'This is the second paragraph of the long form text.',
       'This is the third paragraph of the long form text.'
     ];
-    fixture.detectChanges();
+    fixture.detectChanges(); // Trigger change detection
     const paragraphs = fixture.debugElement.queryAll(By.css('div > p'));
     expect(paragraphs.length).toBe(3);
     expect(paragraphs[0].nativeElement.textContent).toContain('This is the first paragraph of the long form text.');
