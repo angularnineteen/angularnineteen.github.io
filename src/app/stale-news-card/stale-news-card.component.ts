@@ -16,7 +16,7 @@ import { Component, Input } from '@angular/core';
         <!-- <div *ngFor="let paragraph of longFormText"> -->
         <div>
           @for (item of longFormText; track item; let idx = $index, e = $even) {
-            Item #{{ idx }}: {{ item }}
+            <p>Item #{{ idx }}: {{ item }}</p>
           }
         </div>
       </div>
