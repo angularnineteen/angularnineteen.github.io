@@ -207,3 +207,47 @@ Based on the provided ping results, here is the analysis of the response times:
 These values give you an idea of the network latency to the IP address 8.8.8.8, which is a Google Public DNS server. The average response time is quite good, indicating a stable and relatively fast connection.
 
 If you need further analysis or have any other questions, feel free to ask!
+
+```python
+# Given ping results
+ping_results = """
+[1734534601.909800] 64 bytes from 8.8.8.8: icmp_seq=1 ident=2058 ttl=60 time=16.5 ms
+[1734534601.928944] 64 bytes from 8.8.8.8: icmp_seq=2 ident=2058 ttl=60 time=19.1 ms
+[1734534601.938804] 64 bytes from 8.8.8.8: icmp_seq=3 ident=2058 ttl=60 time=12.8 ms
+[1734534601.958597] 64 bytes from 8.8.8.8: icmp_seq=4 ident=2058 ttl=60 time=16.6 ms
+[1734534601.969222] 64 bytes from 8.8.8.8: icmp_seq=5 ident=2058 ttl=60 time=11.2 ms
+[1734534601.988413] 64 bytes from 8.8.8.8: icmp_seq=6 ident=2058 ttl=60 time=14.3 ms
+[1734534602.008368] 64 bytes from 8.8.8.8: icmp_seq=7 ident=2058 ttl=60 time=18.3 ms
+[1734534602.018843] 64 bytes from 8.8.8.8: icmp_seq=8 ident=2058 ttl=60 time=12.7 ms
+[1734534602.037983] 64 bytes from 8.8.8.8: icmp_seq=9 ident=2058 ttl=60 time=16.8 ms
+[1734534602.047667] 64 bytes from 8.8.8.8: icmp_seq=10 ident=2058 ttl=60 time=11.4 ms
+[1734534602.077142] 64 bytes from 8.8.8.8: icmp_seq=11 ident=2058 ttl=60 time=25.9 ms
+[1734534602.077171] 64 bytes from 8.8.8.8: icmp_seq=12 ident=2058 ttl=60 time=10.8 ms
+[1734534602.096309] 64 bytes from 8.8.8.8: icmp_seq=13 ident=2058 ttl=60 time=14.0 ms
+[1734534602.116337] 64 bytes from 8.8.8.8: icmp_seq=14 ident=2058 ttl=60 time=18.0 ms
+[1734534602.126813] 64 bytes from 8.8.8.8: icmp_seq=15 ident=2058 ttl=60 time=12.4 ms
+[1734534602.146772] 64 bytes from 8.8.8.8: icmp_seq=16 ident=2058 ttl=60 time=18.3 ms
+[1734534602.155616] 64 bytes from 8.8.8.8: icmp_seq=17 ident=2058 ttl=60 time=12.1 ms
+[1734534602.175594] 64 bytes from 8.8.8.8: icmp_seq=18 ident=2058 ttl=60 time=17.0 ms
+[1734534602.185206] 64 bytes from 8.8.8.8: icmp_seq=19 ident=2058 ttl=60 time=11.5 ms
+[1734534602.205246] 64 bytes from 8.8.."""
+
+# Extract response times from the ping results
+import re
+
+# Regular expression to match the response times in milliseconds (ms)
+pattern = r"time=(\d+\.\d+) ms"
+
+# Find all matches in the ping results string
+response_times = re.findall(pattern, ping_results)
+
+# Convert the response times to floats
+response_times = [float(time) for time in response_times]
+
+# Calculate average, minimum, and maximum response times
+average_time = sum(response_times) / len(response_times)
+min_time = min(response_times)
+max_time = max(response_times)
+
+average_time, min_time, max_time
+```
