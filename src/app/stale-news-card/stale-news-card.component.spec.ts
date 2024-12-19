@@ -33,4 +33,15 @@ describe('StaleNewsCardComponent', () => {
     const paragraphs = compiled.querySelectorAll('p');
     expect(paragraphs.length).toBe(5); // Only the static paragraphs should be rendered
   });
+
+
+  it('should handle empty title', async () => {
+    component.longFormText = [];
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const title = compiled.querySelectorAll('h2');
+    expect(title.length).toBe(1); // Only the static paragraphs should be rendered
+  });
 });
