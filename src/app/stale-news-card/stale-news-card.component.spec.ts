@@ -12,7 +12,6 @@ describe('StaleNewsCardComponent', () => {
       imports: [CommonModule, StaleNewsCardComponent],
       providers: [provideExperimentalZonelessChangeDetection()]
     }).compileComponents();
-    await fixture.whenStable();
   });
 
   beforeEach(() => {
