@@ -48,7 +48,6 @@ describe('StaleNewsCardComponent', () => {
 
   it('should handle Lorem Ipsum title', async () => {
     component.title = 'Lorem Ipsum';
-    component.longFormText = [];
     fixture.detectChanges();
     await fixture.whenStable();
 
