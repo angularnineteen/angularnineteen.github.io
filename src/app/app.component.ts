@@ -28,6 +28,300 @@ import { provideExperimentalZonelessChangeDetection } from '@angular/core';
         'This is the third paragraph of the long form text.'
       ]">
     </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
+    <app-stale-news-card
+      [title]="'Sample Title'"
+      [subtitle]="'Sample Subtitle'"
+      [originalPublicationDate]="'2023-01-01'"
+      [authors]="['Author One', 'Author Two']"
+      [canonicalUrl]="'https://example.com/article'"
+      [republishDate]="'2023-02-01'"
+      [summary]="'This is a summary of the article.'"
+      [longFormText]="[
+        'This is the first paragraph of the long form text.',
+        'This is the second paragraph of the long form text.',
+        'This is the third paragraph of the long form text.'
+      ]">
+    </app-stale-news-card>
     <router-outlet></router-outlet>
   `,
   styles: [
