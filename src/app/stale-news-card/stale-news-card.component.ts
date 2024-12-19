@@ -61,5 +61,5 @@ export class StaleNewsCardComponent {
   @Input() canonicalUrl: string = '';
   @Input() republishDate: string = '';
   @Input() summary: string = '';
-  @Input() longFormText: string[] = []; // Change to an array of strings
+  @Input() longFormText: string[] = [];
 }
