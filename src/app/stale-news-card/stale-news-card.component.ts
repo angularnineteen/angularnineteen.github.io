@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="card">
       <h2>{{ title }}</h2>
