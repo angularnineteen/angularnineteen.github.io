@@ -36,7 +36,6 @@ describe('StaleNewsCardComponent', () => {
 
   it('should handle empty title', async () => {
     component.title = '';
-    component.longFormText = [];
     fixture.detectChanges();
     await fixture.whenStable();
 
