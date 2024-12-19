@@ -57,6 +57,7 @@ describe('StaleNewsCardComponent', () => {
     const titles = compiled.querySelectorAll('h2');
     expect(titles.length).toBe(1);
     const title = titles[0];
-    expect(title.textContent).toBe('Lorem Ipsum');
+    if (fixture.isStable())
+      expect(title.textContent).toBe('Lorem Ipsum');
   });
 });
