@@ -9,7 +9,7 @@ describe('StaleNewsCardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CommonModule, StaleNewsCardComponent], // Import the standalone component
+      imports: [CommonModule, StaleNewsCardComponent],
       providers: [provideExperimentalZonelessChangeDetection()]
     }).compileComponents();
   });
