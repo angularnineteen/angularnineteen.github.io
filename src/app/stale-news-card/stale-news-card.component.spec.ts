@@ -41,8 +41,9 @@ describe('StaleNewsCardComponent', () => {
     await fixture.whenStable();
 
     const compiled = fixture.nativeElement as HTMLElement;
-    const title = compiled.querySelectorAll('h2');
-    console.info(title);
-    expect(title.length).toBe(1);
+    const titles = compiled.querySelectorAll('h2');
+    expect(titles.length).toBe(1);
+    const title = titles[0];
+    console.info(title.innerText);
   });
 });
