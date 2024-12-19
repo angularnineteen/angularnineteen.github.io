@@ -27,8 +27,8 @@ describe('StaleNewsCardComponent', () => {
   it('should render title and subtitle', async () => {
     component.title = 'Test Title';
     component.subtitle = 'Test Subtitle';
-    console.error(`hello ${component.title}`);
-    console.error(`hello ${component.subtitle}`);
+    console.error(`hello asfsadfsdfsadfasdfsadfas`);
+    console.error(`hello fsadfasdfasdfasfsafs`);
     fixture.detectChanges();
     await fixture.whenStable();
 
