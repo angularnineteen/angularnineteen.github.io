@@ -34,7 +34,6 @@ describe('StaleNewsCardComponent', () => {
     expect(paragraphs.length).toBe(5); // Only the static paragraphs should be rendered
   });
 
-
   it('should handle empty title', async () => {
     component.title = '';
     component.longFormText = [];
@@ -46,5 +45,18 @@ describe('StaleNewsCardComponent', () => {
     expect(titles.length).toBe(1);
     const title = titles[0];
     expect(title.textContent).toBe('');
+  });
+
+  it('should handle Lorem Ipsum title', async () => {
+    component.title = 'Lorem Ipsum';
+    component.longFormText = [];
+    fixture.detectChanges();
+    await fixture.whenStable();
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const titles = compiled.querySelectorAll('h2');
+    expect(titles.length).toBe(1);
+    const title = titles[0];
+    expect(title.textContent).toBe('Lorem Ipsum');
   });
 });
