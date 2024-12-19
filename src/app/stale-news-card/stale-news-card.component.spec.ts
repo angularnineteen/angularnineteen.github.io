@@ -42,6 +42,6 @@ describe('StaleNewsCardComponent', () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
     const title = compiled.querySelectorAll('h2');
-    expect(title.length).toBe(1); // Only the static paragraphs should be rendered
+    expect(title.length).toBe(1);
   });
 });
