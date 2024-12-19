@@ -36,7 +36,6 @@ describe('StaleNewsCardComponent', () => {
 
   it('should handle empty title', async () => {
     component.title = '';
-    fixture.detectChanges();
     await fixture.whenStable();
 
     const compiled = fixture.nativeElement as HTMLElement;
@@ -48,7 +47,6 @@ describe('StaleNewsCardComponent', () => {
 
   it('should handle Lorem Ipsum title', async () => {
     component.title = 'Lorem Ipsum';
-    fixture.detectChanges();
     await fixture.whenStable();
 
     const compiled = fixture.nativeElement as HTMLElement;
