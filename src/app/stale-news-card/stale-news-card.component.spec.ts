@@ -51,6 +51,7 @@ describe('StaleNewsCardComponent', () => {
     component.title = 'Lorem Ipsum';
     component.longFormText = [];
     fixture.detectChanges();
+    fixture.changeDetectorRef.detectChanges();
     await fixture.whenStable();
 
     const compiled = fixture.nativeElement as HTMLElement;
