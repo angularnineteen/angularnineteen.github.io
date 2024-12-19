@@ -42,6 +42,7 @@ describe('StaleNewsCardComponent', () => {
 
     const compiled = fixture.nativeElement as HTMLElement;
     const title = compiled.querySelectorAll('h2');
+    console.info(title);
     expect(title.length).toBe(1);
   });
 });
