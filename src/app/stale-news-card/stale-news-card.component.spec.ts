@@ -45,6 +45,6 @@ describe('StaleNewsCardComponent', () => {
     const titles = compiled.querySelectorAll('h2');
     expect(titles.length).toBe(1);
     const title = titles[0];
-    console.info(title.innerText);
+    expect(title.textContent).toBe('');
   });
 });
