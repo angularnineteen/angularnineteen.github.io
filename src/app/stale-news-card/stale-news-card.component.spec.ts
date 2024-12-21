@@ -21,7 +21,9 @@ describe('StaleNewsCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CommonModule, StaleNewsCardComponent],
-      providers: [provideExperimentalZonelessChangeDetection()]
+      providers: [
+        { provide: ComponentFixtureAutoDetect, useValue: true }
+      ]
     }).compileComponents();
   });
 
