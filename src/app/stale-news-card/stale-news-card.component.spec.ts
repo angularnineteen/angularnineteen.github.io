@@ -3,6 +3,17 @@ import { StaleNewsCardComponent } from './stale-news-card.component';
 import { provideExperimentalZonelessChangeDetection } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
+import { ComponentFixtureAutoDetect } from '@angular/core/testing';
+
+beforeEach(async () => {
+  await TestBed.configureTestingModule({
+    declarations: [StaleNewsCardComponent],
+    providers: [
+      { provide: ComponentFixtureAutoDetect, useValue: true }
+    ],
+  }).compileComponents();
+});
+
 describe('StaleNewsCardComponent', () => {
   let component: StaleNewsCardComponent;
   let fixture: ComponentFixture<StaleNewsCardComponent>;
