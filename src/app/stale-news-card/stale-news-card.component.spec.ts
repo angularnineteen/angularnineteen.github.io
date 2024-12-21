@@ -45,14 +45,15 @@ describe('StaleNewsCardComponent', () => {
     expect(title.textContent).toBe('');
   });
 
-  // it('should handle Lorem Ipsum title', async () => {
-  //   component.title = 'Lorem Ipsum';
-  //   await fixture.whenStable();
-  //
-  //   const compiled = fixture.nativeElement as HTMLElement;
-  //   const titles = compiled.querySelectorAll('h2');
-  //   expect(titles.length).toBe(1);
-  //   const title = titles[0];
-  //   expect(title.textContent).toBe('Lorem Ipsum');
-  // });
+  it('should handle Lorem Ipsum title', async () => {
+    component.title = 'Lorem Ipsum';
+    fixture.detectChanges(); // Ensure the change detection is triggered
+    await fixture.whenStable(); // Wait for the fixture to be stable
+
+    const compiled = fixture.nativeElement as HTMLElement;
+    const titles = compiled.querySelectorAll('h2');
+    expect(titles.length).toBe(1);
+    const title = titles[0];
+    expect(title.textContent).toBe('Lorem Ipsum');
+  });
 });
