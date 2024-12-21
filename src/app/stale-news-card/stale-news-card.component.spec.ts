@@ -21,13 +21,11 @@ describe('StaleNewsCardComponent', () => {
   });
 
   it('should create the component', () => {
-    let fixture1 = TestBed.createComponent(StaleNewsCardComponent);
-    let component1 = fixture1.componentInstance;
-    expect(component1).toBeTruthy();
+    expect(component).toBeTruthy();
   });
 
   it('should handle empty long form text', async () => {
-    longFormText = [];
+    component.longFormText = [];
     fixture.detectChanges();
     await fixture.whenStable();
 
