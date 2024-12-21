@@ -25,7 +25,7 @@ describe('StaleNewsCardComponent', () => {
   });
 
   it('should handle empty long form text', async () => {
-    component.longFormText.update([]);
+    component.longFormText.set([]);
     fixture.detectChanges();
     await fixture.whenStable();
 
