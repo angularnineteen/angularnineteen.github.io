@@ -434,3 +434,32 @@ here is the error I get
     readonly summary = input<string>('');
     readonly longFormText = input<string[]>([]); // Change to an array of strings
     }
+
+
+    $ cd ~/src/myhtml/angularnineteen.github.io/; time npx ng generate @angular/core:signal-input-migration
+    ✔ Which directory do you want to migrate? ./
+    ✔ Do you want to migrate as much as possible, even if it may break your build? Yes
+    Preparing analysis for: tsconfig.app.json..
+    Preparing analysis for: tsconfig.spec.json..
+    Scanning for inputs: tsconfig.app.json..
+    Scanning for inputs: tsconfig.spec.json..
+    
+        Processing analysis data between targets..
+        
+        Migrating: tsconfig.app.json..
+        Migrating: tsconfig.spec.json..
+        Applying changes..
+        
+        Successfully migrated to signal inputs 🎉
+          -> Migrated 8/8 inputs.
+        You ran with best effort mode. Manually verify all code works as intended, and fix where necessary.
+    UPDATE src/app/stale-news-card/stale-news-card.component.ts (1851 bytes)
+    npm notice
+    npm notice New major version of npm available! 10.9.0 -> 11.0.0
+    npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.0.0
+    npm notice To update run: npm install -g npm@11.0.0
+    npm notice
+    
+    real	0m12.191s
+    user	0m4.031s
+    sys	0m0.435s
