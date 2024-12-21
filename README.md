@@ -289,4 +289,85 @@ for context, here is my package.json
 }
 ```
 
+here is the error I get 
 
+```
+ERROR: 'ERROR', Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: ''. Current value: 'Lorem Ipsum'. Expression location: StaleNewsCardComponent component. Find more at https://angular.dev/errors/NG0100
+RuntimeError@http://localhost:9876/_karma_webpack_/vendor.js:49169:5
+throwErrorIfNoChangesMode@http://localhost:9876/_karma_webpack_/vendor.js:60253:9
+bindingUpdated@http://localhost:9876/_karma_webpack_/vendor.js:69119:34
+interpolation1@http://localhost:9876/_karma_webpack_/vendor.js:73176:35
+ɵɵtextInterpolate1@http://localhost:9876/_karma_webpack_/vendor.js:79929:38
+ɵɵtextInterpolate@http://localhost:9876/_karma_webpack_/vendor.js:79905:21
+StaleNewsCardComponent_Template@ng:///StaleNewsCardComponent.js:66:32
+executeTemplate@http://localhost:9876/_karma_webpack_/vendor.js:61970:15
+refreshView@http://localhost:9876/_karma_webpack_/vendor.js:63555:22
+detectChangesInView@http://localhost:9876/_karma_webpack_/vendor.js:63764:16
+detectChangesInViewIfAttached@http://localhost:9876/_karma_webpack_/vendor.js:63726:22
+detectChangesInComponent@http://localhost:9876/_karma_webpack_/vendor.js:63715:32
+detectChangesInChildComponents@http://localhost:9876/_karma_webpack_/vendor.js:63777:29
+refreshView@http://localhost:9876/_karma_webpack_/vendor.js:63608:37
+detectChangesInView@http://localhost:9876/_karma_webpack_/vendor.js:63764:16
+detectChangesInViewWhileDirty@http://localhost:9876/_karma_webpack_/vendor.js:63475:24
+detectChangesInternal@http://localhost:9876/_karma_webpack_/vendor.js:63459:34
+checkNoChangesInternal@http://localhost:9876/_karma_webpack_/vendor.js:63504:26
+checkNoChanges@http://localhost:9876/_karma_webpack_/vendor.js:64087:29
+_tick@http://localhost:9876/_karma_webpack_/vendor.js:71936:16
+tick@http://localhost:9876/_karma_webpack_/vendor.js:71912:10
+detectChanges@http://localhost:9876/_karma_webpack_/vendor.js:92201:24
+1379/</<@http://localhost:9876/_karma_webpack_/main.js:463:13
+asyncGeneratorStep@http://localhost:9876/_karma_webpack_/vendor.js:105118:17
+_next@http://localhost:9876/_karma_webpack_/vendor.js:105132:27
+9204/_asyncToGenerator/</<@http://localhost:9876/_karma_webpack_/vendor.js:105137:12
+9204/_asyncToGenerator/<@http://localhost:9876/_karma_webpack_/vendor.js:105129:12
+attempt@http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7632:40
+QueueRunner.prototype.run@http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7670:27
+runNext@http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7574:16
+attempt/next<@http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7580:11
+once/<@http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7466:11
+wrapInPromiseResolutionHandler/<@http://localhost:9876/base/node_modules/karma-jasmine/node_modules/jasmine-core/lib/jasmine-core/jasmine.js?86d98e11f43f2c8cfac9fb4806ed6c0aced74cbe:7731:9
+Firefox 133.0 (Linux x86_64) StaleNewsCardComponent should handle Lorem Ipsum title FAILED
+	Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: ''. Current value: 'Lorem Ipsum'. Expression location: StaleNewsCardComponent component. Find more at https://angular.dev/errors/NG0100 in vendor.js (line 49169)
+	error properties: Object({ code: -100 })
+	throwErrorIfNoChangesMode@vendor.js:60253:9
+	bindingUpdated@vendor.js:69119:34
+	interpolation1@vendor.js:73176:35
+	ɵɵtextInterpolate1@vendor.js:79929:38
+	ɵɵtextInterpolate@vendor.js:79905:21
+	StaleNewsCardComponent_Template@ng:///StaleNewsCardComponent.js:66:32
+	executeTemplate@vendor.js:61970:15
+	refreshView@vendor.js:63555:22
+	detectChangesInView@vendor.js:63764:16
+	detectChangesInViewIfAttached@vendor.js:63726:22
+	detectChangesInComponent@vendor.js:63715:32
+	detectChangesInChildComponents@vendor.js:63777:29
+	refreshView@vendor.js:63608:37
+	detectChangesInView@vendor.js:63764:16
+	detectChangesInViewWhileDirty@vendor.js:63475:24
+	detectChangesInternal@vendor.js:63459:34
+	checkNoChangesInternal@vendor.js:63504:26
+	checkNoChanges@vendor.js:64087:29
+	_tick@vendor.js:71936:16
+	tick@vendor.js:71912:10
+	detectChanges@vendor.js:92201:24
+	1379/</<@main.js:463:13
+	asyncGeneratorStep@vendor.js:105118:17
+	_next@vendor.js:105132:27
+	9204/_asyncToGenerator/</<@vendor.js:105137:12
+	9204/_asyncToGenerator/<@vendor.js:105129:12
+	<Jasmine>
+Firefox 133.0 (Linux x86_64): Executed 8 of 8 (1 FAILED) (0.087 secs / 0.082 secs)
+TOTAL: 1 FAILED, 7 SUCCESS
+✔ Browser application bundle generation complete.
+Firefox 133.0 (Linux x86_64): Executed 7 of 7 SUCCESS (0.083 secs / 0.078 secs)
+TOTAL: 7 SUCCESS
+✔ Browser application bundle generation complete.
+Firefox 133.0 (Linux x86_64) StaleNewsCardComponent should handle Lorem Ipsum title FAILED
+	Expected '' to be 'Lorem Ipsum'.
+	<Jasmine>
+	1379/</<@main.js:468:31
+	asyncGeneratorStep@vendor.js:105118:17
+	_next@vendor.js:105132:27
+Firefox 133.0 (Linux x86_64): Executed 8 of 8 (1 FAILED) (0.087 secs / 0.082 secs)
+TOTAL: 1 FAILED, 7 SUCCESS
+```
