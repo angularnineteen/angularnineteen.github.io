@@ -23,7 +23,7 @@ describe('StaleNewsCardComponent', () => {
   it('should create the component', () => {
     let fixture1 = TestBed.createComponent(StaleNewsCardComponent);
     let component1 = fixture1.componentInstance;
-    expect(component).toBeTruthy();
+    expect(component1).toBeTruthy();
   });
 
   it('should handle empty long form text', async () => {
