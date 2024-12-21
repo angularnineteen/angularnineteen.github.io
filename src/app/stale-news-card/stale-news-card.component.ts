@@ -1,21 +1,21 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
   template: `
     <div class="card">
-      <h2>{{ title }}</h2>
-      <h3>{{ subtitle }}</h3>
-      <p><strong>Published on: </strong> {{ originalPublicationDate }}</p>
-      <p><strong>Author(s): </strong> {{ authors.join(', ') }}</p>
-      <p><strong>Canonical URL: </strong> <a [href]="canonicalUrl" target="_blank">{{ canonicalUrl }}</a></p>
-      <p><strong>Republished on: </strong> {{ republishDate }}</p>
-      <p><strong>Summary: </strong> {{ summary }}</p>
+      <h2>{{ title() }}</h2>
+      <h3>{{ subtitle() }}</h3>
+      <p><strong>Published on: </strong> {{ originalPublicationDate() }}</p>
+      <p><strong>Author(s): </strong> {{ authors().join(', ') }}</p>
+      <p><strong>Canonical URL: </strong> <a [href]="canonicalUrl()" target="_blank">{{ canonicalUrl() }}</a></p>
+      <p><strong>Republished on: </strong> {{ republishDate() }}</p>
+      <p><strong>Summary: </strong> {{ summary() }}</p>
       <div>
         <strong>Details:</strong>
         <!-- <div *ngFor="let paragraph of longFormText"> -->
         <div>
-          @for (item of longFormText; track item; let idx = $index, e = $even) {
+          @for (item of longFormText(); track item; let idx = $index, e = $even) {
             <p>Item #{{ idx }}: {{ item }}</p>
           }
         </div>
@@ -54,12 +54,12 @@ import { Component, Input } from '@angular/core';
   ]
 })
 export class StaleNewsCardComponent {
-  @Input() title: string = '';
-  @Input() subtitle: string = '';
-  @Input() originalPublicationDate: string = '';
-  @Input() authors: string[] = [];
-  @Input() canonicalUrl: string = '';
-  @Input() republishDate: string = '';
-  @Input() summary: string = '';
-  @Input() longFormText: string[] = []; // Change to an array of strings
+  readonly title = input<string>('');
+  readonly subtitle = input<string>('');
+  readonly originalPublicationDate = input<string>('');
+  readonly authors = input<string[]>([]);
+  readonly canonicalUrl = input<string>('');
+  readonly republishDate = input<string>('');
+  readonly summary = input<string>('');
+  readonly longFormText = input<string[]>([]); // Change to an array of strings
 }
