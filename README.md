@@ -117,6 +117,8 @@ I have a fairly simple component. Problem is that I can't add a test that I woul
     //   const title = titles[0];
     //   expect(title.textContent).toBe('Lorem Ipsum');
     // });
+
+here is the component
   
     import { Component, Input } from '@angular/core';
     
@@ -184,6 +186,8 @@ I have a fairly simple component. Problem is that I can't add a test that I woul
       @Input() longFormText: string[] = []; // Change to an array of strings
     }
   
+here is the `spec.ts`
+
     import { ComponentFixture, TestBed } from '@angular/core/testing';
     import { StaleNewsCardComponent } from './stale-news-card.component';
     import { provideExperimentalZonelessChangeDetection } from '@angular/core';
