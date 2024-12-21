@@ -37,7 +37,10 @@ describe('StaleNewsCardComponent', () => {
   });
 
   it('should handle empty title', async () => {
-    component.title = '';
+    // component.title = '';
+    fixture.componentRef.setInput(
+      'title', ''
+    )
     await fixture.whenStable();
 
     const compiled = fixture.nativeElement as HTMLElement;
