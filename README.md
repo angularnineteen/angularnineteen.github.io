@@ -117,131 +117,131 @@ I have a fairly simple component. Problem is that I can't add a test that I woul
     //   const title = titles[0];
     //   expect(title.textContent).toBe('Lorem Ipsum');
     // });
-
-  import { Component, Input } from '@angular/core';
   
-  @Component({
-    selector: 'app-stale-news-card',
-    template: `
-      <div class="card">
-        <h2>{{ title }}</h2>
-        <h3>{{ subtitle }}</h3>
-        <p><strong>Published on: </strong> {{ originalPublicationDate }}</p>
-        <p><strong>Author(s): </strong> {{ authors.join(', ') }}</p>
-        <p><strong>Canonical URL: </strong> <a [href]="canonicalUrl" target="_blank">{{ canonicalUrl }}</a></p>
-        <p><strong>Republished on: </strong> {{ republishDate }}</p>
-        <p><strong>Summary: </strong> {{ summary }}</p>
-        <div>
-          <strong>Details:</strong>
-          <!-- <div *ngFor="let paragraph of longFormText"> -->
+    import { Component, Input } from '@angular/core';
+    
+    @Component({
+      selector: 'app-stale-news-card',
+      template: `
+        <div class="card">
+          <h2>{{ title }}</h2>
+          <h3>{{ subtitle }}</h3>
+          <p><strong>Published on: </strong> {{ originalPublicationDate }}</p>
+          <p><strong>Author(s): </strong> {{ authors.join(', ') }}</p>
+          <p><strong>Canonical URL: </strong> <a [href]="canonicalUrl" target="_blank">{{ canonicalUrl }}</a></p>
+          <p><strong>Republished on: </strong> {{ republishDate }}</p>
+          <p><strong>Summary: </strong> {{ summary }}</p>
           <div>
-            @for (item of longFormText; track item; let idx = $index, e = $even) {
-              <p>Item #{{ idx }}: {{ item }}</p>
-            }
+            <strong>Details:</strong>
+            <!-- <div *ngFor="let paragraph of longFormText"> -->
+            <div>
+              @for (item of longFormText; track item; let idx = $index, e = $even) {
+                <p>Item #{{ idx }}: {{ item }}</p>
+              }
+            </div>
           </div>
         </div>
-      </div>
-    `,
-    styles: [
-      `
-        .card {
-          border: 1px solid #ccc;
-          border-radius: 8px;
-          padding: 16px;
-          margin: 16px 0;
-          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        h2 {
-          margin: 0;
-          font-size: 1.5em;
-        }
-        h3 {
-          margin: 0;
-          font-size: 1.2em;
-          color: #555;
-        }
-        p {
-          margin: 8px 0;
-        }
-        a {
-          color: #007bff;
-          text-decoration: none;
-        }
-        a:hover {
-          text-decoration: underline;
-        }
-      `
-    ]
-  })
-  export class StaleNewsCardComponent {
-    @Input() title: string = '';
-    @Input() subtitle: string = '';
-    @Input() originalPublicationDate: string = '';
-    @Input() authors: string[] = [];
-    @Input() canonicalUrl: string = '';
-    @Input() republishDate: string = '';
-    @Input() summary: string = '';
-    @Input() longFormText: string[] = []; // Change to an array of strings
-  }
-
-  import { ComponentFixture, TestBed } from '@angular/core/testing';
-  import { StaleNewsCardComponent } from './stale-news-card.component';
-  import { provideExperimentalZonelessChangeDetection } from '@angular/core';
-  import { CommonModule } from '@angular/common';
+      `,
+      styles: [
+        `
+          .card {
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+          }
+          h2 {
+            margin: 0;
+            font-size: 1.5em;
+          }
+          h3 {
+            margin: 0;
+            font-size: 1.2em;
+            color: #555;
+          }
+          p {
+            margin: 8px 0;
+          }
+          a {
+            color: #007bff;
+            text-decoration: none;
+          }
+          a:hover {
+            text-decoration: underline;
+          }
+        `
+      ]
+    })
+    export class StaleNewsCardComponent {
+      @Input() title: string = '';
+      @Input() subtitle: string = '';
+      @Input() originalPublicationDate: string = '';
+      @Input() authors: string[] = [];
+      @Input() canonicalUrl: string = '';
+      @Input() republishDate: string = '';
+      @Input() summary: string = '';
+      @Input() longFormText: string[] = []; // Change to an array of strings
+    }
   
-  describe('StaleNewsCardComponent', () => {
-    let component: StaleNewsCardComponent;
-    let fixture: ComponentFixture<StaleNewsCardComponent>;
-  
-    beforeEach(async () => {
-      await TestBed.configureTestingModule({
-        imports: [CommonModule, StaleNewsCardComponent],
-        providers: [provideExperimentalZonelessChangeDetection()]
-      }).compileComponents();
+    import { ComponentFixture, TestBed } from '@angular/core/testing';
+    import { StaleNewsCardComponent } from './stale-news-card.component';
+    import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+    import { CommonModule } from '@angular/common';
+    
+    describe('StaleNewsCardComponent', () => {
+      let component: StaleNewsCardComponent;
+      let fixture: ComponentFixture<StaleNewsCardComponent>;
+    
+      beforeEach(async () => {
+        await TestBed.configureTestingModule({
+          imports: [CommonModule, StaleNewsCardComponent],
+          providers: [provideExperimentalZonelessChangeDetection()]
+        }).compileComponents();
+      });
+    
+      beforeEach(() => {
+        fixture = TestBed.createComponent(StaleNewsCardComponent);
+        component = fixture.componentInstance;
+        fixture.detectChanges();
+      });
+    
+      it('should create the component', () => {
+        expect(component).toBeTruthy();
+      });
+    
+      it('should handle empty long form text', async () => {
+        component.longFormText = [];
+        fixture.detectChanges();
+        await fixture.whenStable();
+    
+        const compiled = fixture.nativeElement as HTMLElement;
+        const paragraphs = compiled.querySelectorAll('p');
+        expect(paragraphs.length).toBe(5); // Only the static paragraphs should be rendered
+      });
+    
+      it('should handle empty title', async () => {
+        component.title = '';
+        await fixture.whenStable();
+    
+        const compiled = fixture.nativeElement as HTMLElement;
+        const titles = compiled.querySelectorAll('h2');
+        expect(titles.length).toBe(1);
+        const title = titles[0];
+        expect(title.textContent).toBe('');
+      });
+    
+      // it('should handle Lorem Ipsum title', async () => {
+      //   component.title = 'Lorem Ipsum';
+      //   await fixture.whenStable();
+      //
+      //   const compiled = fixture.nativeElement as HTMLElement;
+      //   const titles = compiled.querySelectorAll('h2');
+      //   expect(titles.length).toBe(1);
+      //   const title = titles[0];
+      //   expect(title.textContent).toBe('Lorem Ipsum');
+      // });
     });
-  
-    beforeEach(() => {
-      fixture = TestBed.createComponent(StaleNewsCardComponent);
-      component = fixture.componentInstance;
-      fixture.detectChanges();
-    });
-  
-    it('should create the component', () => {
-      expect(component).toBeTruthy();
-    });
-  
-    it('should handle empty long form text', async () => {
-      component.longFormText = [];
-      fixture.detectChanges();
-      await fixture.whenStable();
-  
-      const compiled = fixture.nativeElement as HTMLElement;
-      const paragraphs = compiled.querySelectorAll('p');
-      expect(paragraphs.length).toBe(5); // Only the static paragraphs should be rendered
-    });
-  
-    it('should handle empty title', async () => {
-      component.title = '';
-      await fixture.whenStable();
-  
-      const compiled = fixture.nativeElement as HTMLElement;
-      const titles = compiled.querySelectorAll('h2');
-      expect(titles.length).toBe(1);
-      const title = titles[0];
-      expect(title.textContent).toBe('');
-    });
-  
-    // it('should handle Lorem Ipsum title', async () => {
-    //   component.title = 'Lorem Ipsum';
-    //   await fixture.whenStable();
-    //
-    //   const compiled = fixture.nativeElement as HTMLElement;
-    //   const titles = compiled.querySelectorAll('h2');
-    //   expect(titles.length).toBe(1);
-    //   const title = titles[0];
-    //   expect(title.textContent).toBe('Lorem Ipsum');
-    // });
-  });
 
 for context, here is my package.json
     {
