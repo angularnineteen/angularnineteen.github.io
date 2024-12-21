@@ -46,17 +46,11 @@ describe('StaleNewsCardComponent', () => {
   });
 
   it('should handle Lorem Ipsum title', async () => {
-    // Update the component's input property
-    component.title = 'Lorem Ipsum';
-
-    // Detect changes to update the DOM
-    fixture.detectChanges();
-
-    // Allow Angular to complete the stabilization cycle
-    await fixture.whenStable();
-
-    // Re-run change detection to ensure consistency
-    fixture.detectChanges();
+    // Delay the property update to simulate an asynchronous operation
+    await Promise.resolve().then(() => {
+      component.title = 'Lorem Ipsum';
+      fixture.detectChanges(); // Trigger manual change detection
+    });
 
     // Assert the DOM updates
     const compiled = fixture.nativeElement as HTMLElement;
