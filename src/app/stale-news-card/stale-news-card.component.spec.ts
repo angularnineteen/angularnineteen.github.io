@@ -54,7 +54,7 @@ describe('StaleNewsCardComponent', () => {
     // component.title = 'Lorem Ipsum';
     fixture.componentRef.setInput(
       'title',
-      'Lorem ipsum dolor'
+      'Lorem Ipsum'
     )
     await fixture.whenStable();
 
