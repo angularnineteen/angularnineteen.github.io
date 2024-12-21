@@ -47,8 +47,8 @@ describe('StaleNewsCardComponent', () => {
 
   it('should handle Lorem Ipsum title', async () => {
     component.title = 'Lorem Ipsum';
-    fixture.detectChanges(); // Ensure the change detection is triggered
-    await fixture.whenStable(); // Wait for the fixture to be stable
+    fixture.detectChanges(); // Manually trigger change detection
+    await fixture.whenStable();
 
     const compiled = fixture.nativeElement as HTMLElement;
     const titles = compiled.querySelectorAll('h2');
