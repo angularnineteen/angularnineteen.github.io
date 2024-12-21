@@ -98,10 +98,14 @@ sys	0m7.705s
 
 
 
-I have an angular 19 application, zoneless, inline-style, inline-template, no server-side rendering, and single component module 
+## Please help. I am trying my first unit tests in zoneless angular 19 and I ran into a problem.  Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: ''. Current value: 'Lorem Ipsum'.
+
+I have an angular 19 application, zoneless, inline-style, inline-template, no server-side rendering, and single component module
 ng new StaleNews --experimental-zoneless=true --inline-style=true --inline-template=true --package-manager=yarn --ssr=false --style=css --view-encapsulation=ShadowDom
 
-I have a fairly simple component. Problem is that I can't add a test that I would like to add. here is the test 
+I can post the link to the github repo if you think it is helpful.
+
+I have a fairly simple component. Problem is that I can't add a test that I would like to add. here is the test
 ```ts
   // it('should handle Lorem Ipsum title', async () => {
   //   component.title = 'Lorem Ipsum';
@@ -289,7 +293,7 @@ for context, here is my package.json
 }
 ```
 
-here is the error I get 
+here is the error I get
 
 ```
 ERROR: 'ERROR', Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: ''. Current value: 'Lorem Ipsum'. Expression location: StaleNewsCardComponent component. Find more at https://angular.dev/errors/NG0100
