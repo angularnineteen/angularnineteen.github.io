@@ -248,6 +248,7 @@ here is the `spec.ts`
     });
 
 for context, here is my package.json
+
     {
       "name": "stale-news",
       "version": "0.0.0",
