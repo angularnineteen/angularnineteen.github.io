@@ -28,7 +28,6 @@ describe('StaleNewsCardComponent', () => {
     fixture.componentRef.setInput(
       'longFormText', ''
     );
-    component.longFormText = [];
     fixture.detectChanges();
     await fixture.whenStable();
 
