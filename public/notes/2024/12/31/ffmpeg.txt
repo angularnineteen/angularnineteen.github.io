@@ -18,3 +18,36 @@ usage: ffmpeg [options] [[infile options] -i infile]... {[outfile options] outfi
 
 Use -h to get full help or, even better, run 'man ffmpeg'
 
+To create a beautiful timelapse video from your four input videos, you need to decide on the desired duration of the final timelapse video. Let's assume you want the timelapse to be around 5 minutes long.
+
+Given that the total duration of your input videos is 16 hours, the compression factor can be calculated as follows:
+
+$$ \text{Compression Factor} = \frac{\text{Total Duration (in minutes)}}{\text{Desired Duration (in minutes)}} $$
+
+For a 5-minute timelapse video:
+
+$$ \text{Compression Factor} = \frac{16 \times 60}{5} = 192 $$
+
+This means you'll need to speed up the video by a factor of 192.
+
+Here's how you can use `ffmpeg` to create the timelapse:
+
+1. **Navigate to your video directory:**
+   ```bash
+   cd ~/Videos/tapo/
+   ```
+
+2. **Create the timelapse video:**
+   ```bash
+   ffmpeg -i output-2024-12-27T21-31-05-001.mp4 -filter:v "setpts=PTS/192" -an timelapse-001.mp4
+   ffmpeg -i output-2024-12-27T21-31-05-002.mp4 -filter:v "setpts=PTS/192" -an timelapse-002.mp4
+   ffmpeg -i output-2024-12-27T21-31-05-003.mp4 -filter:v "setpts=PTS/192" -an timelapse-003.mp4
+   ffmpeg -i output-2024-12-27T21-31-05-004.mp4 -filter:v "setpts=PTS/192" -an timelapse-004.mp4
+   ```
+
+3. **Combine the timelapse segments into one video:**
+   ```bash
+   ffmpeg -f concat -safe 0 -i <(for f in timelapse-00*.mp4; do echo "file '$PWD/$f'"; done) -c copy final-timelapse.mp4
+   ```
+
+This will create a final timelapse video named `final-timelapse.mp4` that is approximately 5 minutes long. If you have a different desired duration, you can adjust the compression factor accordingly. Let me know if you need any further assistance!
