@@ -112,7 +112,7 @@ export class StaleNewsCardComponent {
   readonly longFormText = input<string[]>([]); // Change to an array of strings
   readonly currentIndex = signal<number>(0);
 
-  ngOnInit() {
+  StaleNewsCardComponent() {
     const storedIndex = localStorage.getItem('currentIndex');
     console.log(storedIndex);
     if (storedIndex !== null) {
