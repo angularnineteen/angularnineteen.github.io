@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
@@ -21,13 +21,13 @@ import { Component, input } from '@angular/core';
         </div>
       </div>
       <div class="increment-decrement-buttons">
-        <button (click)="currentIndex = currentIndex - 1" class="btn">
+        <button (click)="decrement()" class="btn">
           Decrement
         </button>
 
-        <span>{{currentIndex}}</span>
+        <span>{{ currentIndex() }}</span>
 
-        <button (click)="currentIndex = currentIndex + 1" class="btn">
+        <button (click)="increment()" class="btn">
           Increment
         </button>
       </div>
@@ -110,5 +110,13 @@ export class StaleNewsCardComponent {
   readonly republishDate = input<string>('');
   readonly summary = input<string>('');
   readonly longFormText = input<string[]>([]); // Change to an array of strings
-  currentIndex = 0;
+  readonly currentIndex = signal<number>(0);
+
+  increment() {
+    this.currentIndex.update(value => value + 1);
+  }
+
+  decrement() {
+    this.currentIndex.update(value => value - 1);
+  }
 }
