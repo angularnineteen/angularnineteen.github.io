@@ -113,7 +113,10 @@ export class StaleNewsCardComponent {
   readonly currentIndex = signal<number>(0);
 
   ngOnInit() {
-    const storedIndex = localStorage.getItem('currentIndex') ?? 0;
+    let storedIndex = localStorage.getItem('currentIndex');
+    if (storedIndex === undefined || storedIndex === null) {
+      storedIndex = 0;
+    }
     if (storedIndex !== null) {
       this.currentIndex.set(Number(storedIndex));
     }
