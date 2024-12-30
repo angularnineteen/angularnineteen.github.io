@@ -126,6 +126,11 @@ export class StaleNewsCardComponent {
   }
 
   increment() {
+    const storedIndex = localStorage.getItem('currentIndex');
+    console.log(storedIndex);
+    if (storedIndex !== null) {
+      this.currentIndex.set(Number(storedIndex));
+    }
     this.currentIndex.update(value => value + 1);
     console.log(this.currentIndex());
     console.info(`Now storing ${this.currentIndex().toString()} as the value for current index`);
@@ -133,6 +138,11 @@ export class StaleNewsCardComponent {
   }
 
   decrement() {
+    const storedIndex = localStorage.getItem('currentIndex');
+    console.log(storedIndex);
+    if (storedIndex !== null) {
+      this.currentIndex.set(Number(storedIndex));
+    }
     this.currentIndex.update(value => value - 1);
     console.log(this.currentIndex());
     console.info(`Now storing ${this.currentIndex().toString()} as the value for current index`);
