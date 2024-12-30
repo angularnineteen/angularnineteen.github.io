@@ -21,7 +21,7 @@ import { Component, input } from '@angular/core';
         </div>
       </div>
     </div>
-    {{ 1  + 2 }}
+    The sum of one and two is {{ 1  + 2 }}.
   `,
   styles: [
     `
