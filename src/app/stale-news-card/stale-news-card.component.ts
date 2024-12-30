@@ -1,4 +1,9 @@
-import { Component, input, signal, effect } from '@angular/core';
+import {
+  Component,
+  input,
+  signal,
+  effect
+} from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
