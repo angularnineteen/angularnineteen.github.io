@@ -365,5 +365,4 @@ import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.compon
 })
 export class AppComponent {
   title = 'Stale News';
-  currentIndex = 0;
 }

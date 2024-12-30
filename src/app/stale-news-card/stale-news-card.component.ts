@@ -20,6 +20,17 @@ import { Component, input } from '@angular/core';
           }
         </div>
       </div>
+      <div class="flex gap-2 items-center">
+        <button (click)="currentIndex = currentIndex - 1" class="btn">
+          Decrement
+        </button>
+
+        <span>{{currentIndex}}</span>
+
+        <button (click)="currentIndex = currentIndex + 1" class="btn">
+          Increment
+        </button>
+      </div>
     </div>
   `,
   styles: [
@@ -62,4 +73,5 @@ export class StaleNewsCardComponent {
   readonly republishDate = input<string>('');
   readonly summary = input<string>('');
   readonly longFormText = input<string[]>([]); // Change to an array of strings
+  currentIndex = 0;
 }
