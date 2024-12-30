@@ -1,9 +1,10 @@
-import { Component, input, signal, effect, OnInit } from '@angular/core';
+import { Component, input, signal, effect } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
   template: `
     <div class="card">
+      <p>The following is for debugging only: {{ currentIndex() }}</p>
       <h2>{{ title() }}</h2>
       <h3>{{ subtitle() }}</h3>
       <p><strong>Published on: </strong> {{ originalPublicationDate() }}</p>
