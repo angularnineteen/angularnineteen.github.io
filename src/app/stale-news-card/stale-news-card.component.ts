@@ -111,4 +111,13 @@ export class StaleNewsCardComponent {
   readonly summary = input<string>('');
   readonly longFormText = input<string[]>([]); // Change to an array of strings
   currentIndex = 0;
+  readonly currentIndex = signal<number>(0);
+
+  increment() {
+    this.currentIndex.update(value => value + 1);
+  }
+
+  decrement() {
+    this.currentIndex.update(value => value - 1);
+  }
 }
