@@ -63,8 +63,40 @@ import { Component, input } from '@angular/core';
       }
       .increment-decrement-buttons {
         display: flex;
-        place-items: center;
+        justify-content: center;
+        align-items: center;
+        gap: 10px;
+        padding: 20px;
+      }
 
+      .btn {
+        padding: 10px 20px;
+        font-size: 16px;
+        border: none;
+        background-color: #007bff;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      .btn:active {
+        background-color: #0056b3;
+      }
+
+      span {
+        font-size: 18px;
+        margin: 0 10px;
+      }
+
+      @media (max-width: 600px) {
+        .btn {
+          padding: 15px 25px;
+          font-size: 18px;
+        }
+
+        span {
+          font-size: 20px;
+        }
       }
     `
   ]
