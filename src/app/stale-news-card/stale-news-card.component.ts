@@ -128,10 +128,14 @@ export class StaleNewsCardComponent {
   increment() {
     this.currentIndex.update(value => value + 1);
     console.log(this.currentIndex());
+    console.info(`Now storing ${this.currentIndex().toString()} as the value for current index`);
+    localStorage.setItem('currentIndex', this.currentIndex().toString());
   }
 
   decrement() {
     this.currentIndex.update(value => value - 1);
     console.log(this.currentIndex());
+    console.info(`Now storing ${this.currentIndex().toString()} as the value for current index`);
+    localStorage.setItem('currentIndex', this.currentIndex().toString());
   }
 }
