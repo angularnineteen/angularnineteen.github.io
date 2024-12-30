@@ -4,7 +4,7 @@ import { Component, input, signal, effect, OnInit } from '@angular/core';
   selector: 'app-stale-news-card',
   template: `
     <div class="card">
-      <h2>{{ title() }} - {{ currentIndex() }}</h2>
+      <h2>{{ title() }}</h2>
       <h3>{{ subtitle() }}</h3>
       <p><strong>Published on: </strong> {{ originalPublicationDate() }}</p>
       <p><strong>Author(s): </strong> {{ authors().join(', ') }}</p>
