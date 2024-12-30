@@ -333,7 +333,7 @@ import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.compon
         Increment
       </button>
     </div>
-    
+
     <router-outlet></router-outlet>
   `,
   styles: [
@@ -378,4 +378,5 @@ import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.compon
 })
 export class AppComponent {
   title = 'Stale News';
+  currentIndex = 0;
 }
