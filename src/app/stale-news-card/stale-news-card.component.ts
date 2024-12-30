@@ -126,9 +126,11 @@ export class StaleNewsCardComponent {
 
   increment() {
     this.currentIndex.update(value => value + 1);
+    console.log(this.currentIndex);
   }
 
   decrement() {
     this.currentIndex.update(value => value - 1);
+    console.log(this.currentIndex);
   }
 }
