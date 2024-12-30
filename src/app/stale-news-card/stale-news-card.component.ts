@@ -118,11 +118,9 @@ export class StaleNewsCardComponent {
       this.currentIndex.set(Number(storedIndex));
     }
 
-    this.currentIndex.subscribe(doSomething);
-
-    function doSomething(value) {
+    this.currentIndex.subscribe(value => {
       localStorage.setItem('currentIndex', value.toString());
-    }
+    });
   }
 
   increment() {
