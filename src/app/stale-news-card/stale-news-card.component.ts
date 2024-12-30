@@ -61,6 +61,11 @@ import { Component, input } from '@angular/core';
       a:hover {
         text-decoration: underline;
       }
+      .increment-decrement-buttons {
+        display: flex;
+        place-items: center;
+
+      }
     `
   ]
 })
