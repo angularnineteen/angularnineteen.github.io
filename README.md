@@ -295,3 +295,171 @@ for context, here is my package.json
 here is the error I get
 
 > ERROR: 'ERROR', Error: NG0100: ExpressionChangedAfterItHasBeenCheckedError: Expression has changed after it was checked. Previous value: ''. Current value: 'Lorem Ipsum'. Expression location: StaleNewsCardComponent component. Find more at https://angular.dev/errors/NG0100
+
+
+
+
+      import { ComponentFixture, TestBed } from '@angular/core/testing';
+      import { StaleNewsCardComponent } from './stale-news-card.component';
+      import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+      import { CommonModule } from '@angular/common';
+      
+      describe('StaleNewsCardComponent', () => {
+      let component: StaleNewsCardComponent;
+      let fixture: ComponentFixture<StaleNewsCardComponent>;
+      
+      beforeEach(async () => {
+      await TestBed.configureTestingModule({
+      imports: [CommonModule, StaleNewsCardComponent],
+      providers: [provideExperimentalZonelessChangeDetection()]
+      }).compileComponents();
+      });
+      
+      beforeEach(() => {
+      fixture = TestBed.createComponent(StaleNewsCardComponent);
+      component = fixture.componentInstance;
+      fixture.detectChanges();
+      });
+      
+      it('should create the component', () => {
+      expect(component).toBeTruthy();
+      });
+      
+      it('should handle empty long form text', async () => {
+      fixture.componentRef.setInput(
+      'longFormText', ''
+      );
+      fixture.detectChanges();
+      await fixture.whenStable();
+      
+          const compiled = fixture.nativeElement as HTMLElement;
+          const paragraphs = compiled.querySelectorAll('p');
+          expect(paragraphs.length).toBe(5); // Only the static paragraphs should be rendered
+      });
+      
+      it('should handle empty title', async () => {
+      // component.title = '';
+      fixture.componentRef.setInput(
+      'title', ''
+      )
+      await fixture.whenStable();
+      
+          const compiled = fixture.nativeElement as HTMLElement;
+          const titles = compiled.querySelectorAll('h2');
+          expect(titles.length).toBe(1);
+          const title = titles[0];
+          expect(title.textContent).toBe('');
+      });
+      
+      it('should handle Lorem Ipsum title', async () => {
+      // component.title = 'Lorem Ipsum';
+      fixture.componentRef.setInput(
+      'title',
+      'Lorem Ipsum'
+      )
+      await fixture.whenStable();
+      
+          const compiled = fixture.nativeElement as HTMLElement;
+          const titles = compiled.querySelectorAll('h2');
+          expect(titles.length).toBe(1);
+          const title = titles[0];
+          expect(title.textContent).toBe('Lorem Ipsum');
+      });
+      });
+
+
+
+    import { Component, input } from '@angular/core';
+    
+    @Component({
+    selector: 'app-stale-news-card',
+    template: `
+        <div class="card">
+          <h2>{{ title() }}</h2>
+          <h3>{{ subtitle() }}</h3>
+          <p><strong>Published on: </strong> {{ originalPublicationDate() }}</p>
+          <p><strong>Author(s): </strong> {{ authors().join(', ') }}</p>
+          <p><strong>Canonical URL: </strong> <a [href]="canonicalUrl()" target="_blank">{{ canonicalUrl() }}</a></p>
+          <p><strong>Republished on: </strong> {{ republishDate() }}</p>
+          <p><strong>Summary: </strong> {{ summary() }}</p>
+          <div>
+            <strong>Details:</strong>
+            <!-- <div *ngFor="let paragraph of longFormText"> -->
+            <div>
+              @for (item of longFormText(); track item; let idx = $index, e = $even) {
+                <p>Item #{{ idx }}: {{ item }}</p>
+              }
+            </div>
+          </div>
+        </div>
+      `,
+    styles: [
+    `
+      .card {
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        padding: 16px;
+        margin: 16px 0;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+      h2 {
+        margin: 0;
+        font-size: 1.5em;
+      }
+      h3 {
+        margin: 0;
+        font-size: 1.2em;
+        color: #555;
+      }
+      p {
+        margin: 8px 0;
+      }
+      a {
+        color: #007bff;
+        text-decoration: none;
+      }
+      a:hover {
+        text-decoration: underline;
+      }
+    `
+    ]
+    })
+    export class StaleNewsCardComponent {
+    readonly title = input<string>('');
+    readonly subtitle = input<string>('');
+    readonly originalPublicationDate = input<string>('');
+    readonly authors = input<string[]>([]);
+    readonly canonicalUrl = input<string>('');
+    readonly republishDate = input<string>('');
+    readonly summary = input<string>('');
+    readonly longFormText = input<string[]>([]); // Change to an array of strings
+    }
+
+
+    $ cd ~/src/myhtml/angularnineteen.github.io/; time npx ng generate @angular/core:signal-input-migration
+    ✔ Which directory do you want to migrate? ./
+    ✔ Do you want to migrate as much as possible, even if it may break your build? Yes
+    Preparing analysis for: tsconfig.app.json..
+    Preparing analysis for: tsconfig.spec.json..
+    Scanning for inputs: tsconfig.app.json..
+    Scanning for inputs: tsconfig.spec.json..
+    
+        Processing analysis data between targets..
+        
+        Migrating: tsconfig.app.json..
+        Migrating: tsconfig.spec.json..
+        Applying changes..
+        
+        Successfully migrated to signal inputs 🎉
+          -> Migrated 8/8 inputs.
+        You ran with best effort mode. Manually verify all code works as intended, and fix where necessary.
+    UPDATE src/app/stale-news-card/stale-news-card.component.ts (1851 bytes)
+    npm notice
+    npm notice New major version of npm available! 10.9.0 -> 11.0.0
+    npm notice Changelog: https://github.com/npm/cli/releases/tag/v11.0.0
+    npm notice To update run: npm install -g npm@11.0.0
+    npm notice
+    
+    real	0m12.191s
+    user	0m4.031s
+    sys	0m0.435s
