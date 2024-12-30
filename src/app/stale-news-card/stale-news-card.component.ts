@@ -1,4 +1,4 @@
-import { Component, input, signal, OnInit } from '@angular/core';
+import { Component, input, signal, effect, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
@@ -118,8 +118,8 @@ export class StaleNewsCardComponent {
       this.currentIndex.set(Number(storedIndex));
     }
 
-    this.currentIndex.subscribe(value => {
-      localStorage.setItem('currentIndex', value.toString());
+    effect(() => {
+      localStorage.setItem('currentIndex', this.currentIndex().toString());
     });
   }
 
