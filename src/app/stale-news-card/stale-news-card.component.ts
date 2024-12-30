@@ -1,4 +1,4 @@
-import { Component, input, signal } from '@angular/core';
+import { Component, input, signal, effect, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
@@ -111,6 +111,18 @@ export class StaleNewsCardComponent {
   readonly summary = input<string>('');
   readonly longFormText = input<string[]>([]); // Change to an array of strings
   readonly currentIndex = signal<number>(0);
+
+  StaleNewsCardComponent() {
+    const storedIndex = localStorage.getItem('currentIndex');
+    console.log(storedIndex);
+    if (storedIndex !== null) {
+      this.currentIndex.set(Number(storedIndex));
+    }
+
+    effect(() => {
+      localStorage.setItem('currentIndex', this.currentIndex().toString());
+    });
+  }
 
   increment() {
     this.currentIndex.update(value => value + 1);
