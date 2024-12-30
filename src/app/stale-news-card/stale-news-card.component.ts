@@ -21,6 +21,7 @@ import { Component, input } from '@angular/core';
         </div>
       </div>
     </div>
+    {{ 1  + 2 }}
   `,
   styles: [
     `
