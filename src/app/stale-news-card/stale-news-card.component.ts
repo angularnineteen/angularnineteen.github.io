@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, signal } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
@@ -110,7 +110,6 @@ export class StaleNewsCardComponent {
   readonly republishDate = input<string>('');
   readonly summary = input<string>('');
   readonly longFormText = input<string[]>([]); // Change to an array of strings
-  currentIndex = 0;
   readonly currentIndex = signal<number>(0);
 
   increment() {
