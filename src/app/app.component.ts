@@ -321,19 +321,6 @@ import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.compon
         'This is the third paragraph of the long form text.'
       ]">
     </app-stale-news-card>
-
-    <div class="flex gap-2 items-center">
-      <button (click)="currentIndex = currentIndex - 1" class="btn">
-        Decrement
-      </button>
-
-      <span>{{currentIndex}}</span>
-
-      <button (click)="currentIndex = currentIndex + 1" class="btn">
-        Increment
-      </button>
-    </div>
-
     <router-outlet></router-outlet>
   `,
   styles: [
