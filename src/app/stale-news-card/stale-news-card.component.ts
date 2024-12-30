@@ -21,13 +21,13 @@ import { Component, input, signal } from '@angular/core';
         </div>
       </div>
       <div class="increment-decrement-buttons">
-        <button (click)="currentIndex = currentIndex - 1" class="btn">
+        <button (click)="decrement()" class="btn">
           Decrement
         </button>
 
-        <span>{{currentIndex}}</span>
+        <span>{{ currentIndex() }}</span>
 
-        <button (click)="currentIndex = currentIndex + 1" class="btn">
+        <button (click)="increment()" class="btn">
           Increment
         </button>
       </div>
