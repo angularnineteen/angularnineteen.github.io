@@ -1,0 +1,77 @@
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ time ng test
+✔ Browser application bundle generation complete.
+30 12 2024 18:41:14.507:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+30 12 2024 18:41:14.507:INFO [launcher]: Launching browsers FirefoxHeadless with concurrency unlimited
+30 12 2024 18:41:14.510:INFO [launcher]: Starting browser Firefox
+30 12 2024 18:41:15.475:INFO [Firefox 133.0 (Linux x86_64)]: Connected on socket 161upTVF1cQI_iRhAAAB with id 94717642
+Firefox 133.0 (Linux x86_64): Executed 8 of 8 SUCCESS (0.133 secs / 0.12 secs)
+TOTAL: 8 SUCCESS
+
+real	0m3.893s
+user	0m5.566s
+sys	0m1.450s
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ cd ~/src/myhtml/angularnineteen.github.io/; time yarn run ng build; time yarn run ng test
+yarn run v1.22.22
+$ ng build
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+main-SNZVYGR6.js    | main          | 206.61 kB |                55.02 kB
+styles-5INURTSO.css | styles        |   0 bytes |                 0 bytes
+
+                    | Initial total | 206.61 kB |                55.02 kB
+
+Application bundle generation complete. [1.314 seconds]
+
+Output location: /home/kushal/src/myhtml/angularnineteen.github.io/docs
+
+Done in 1.74s.
+
+real	0m1.839s
+user	0m2.728s
+sys	0m0.333s
+yarn run v1.22.22
+$ ng test
+✔ Browser application bundle generation complete.
+30 12 2024 18:42:50.594:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+30 12 2024 18:42:50.595:INFO [launcher]: Launching browsers FirefoxHeadless with concurrency unlimited
+30 12 2024 18:42:50.616:INFO [launcher]: Starting browser Firefox
+30 12 2024 18:42:51.544:INFO [Firefox 133.0 (Linux x86_64)]: Connected on socket txqtDiwshbZkxdESAAAB with id 41218420
+Firefox 133.0 (Linux x86_64): Executed 8 of 8 SUCCESS (0.121 secs / 0.114 secs)
+TOTAL: 8 SUCCESS
+Done in 3.43s.
+
+real	0m3.534s
+user	0m4.895s
+sys	0m1.205s
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$ cd ~/src/myhtml/angularnineteen.github.io/; time yarn run ng build; time yarn run ng test
+yarn run v1.22.22
+$ ng build
+Initial chunk files | Names         |  Raw size | Estimated transfer size
+main-SNZVYGR6.js    | main          | 206.61 kB |                55.02 kB
+styles-5INURTSO.css | styles        |   0 bytes |                 0 bytes
+
+                    | Initial total | 206.61 kB |                55.02 kB
+
+Application bundle generation complete. [1.268 seconds]
+
+Output location: /home/kushal/src/myhtml/angularnineteen.github.io/docs
+
+Done in 1.66s.
+
+real	0m1.760s
+user	0m2.660s
+sys	0m0.287s
+yarn run v1.22.22
+$ ng test
+✔ Browser application bundle generation complete.
+30 12 2024 18:45:09.885:INFO [karma-server]: Karma v6.4.4 server started at http://localhost:9876/
+30 12 2024 18:45:09.886:INFO [launcher]: Launching browsers FirefoxHeadless with concurrency unlimited
+30 12 2024 18:45:09.895:INFO [launcher]: Starting browser Firefox
+30 12 2024 18:45:10.856:INFO [Firefox 133.0 (Linux x86_64)]: Connected on socket eGEC30iCalBU_GphAAAB with id 1890699
+Firefox 133.0 (Linux x86_64): Executed 8 of 8 SUCCESS (0.115 secs / 0.11 secs)
+TOTAL: 8 SUCCESS
+Done in 3.63s.
+
+real	0m3.731s
+user	0m5.414s
+sys	0m1.217s
+kushal@kusfedora2024:~/src/myhtml/angularnineteen.github.io$
