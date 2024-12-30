@@ -14,7 +14,7 @@ import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.compon
       Stale News is here so you can read old news.
     </p>
     <app-stale-news-card
-      [title]="'Ooga booga'"
+      [title]="'Sample Title'"
       [subtitle]="'Sample Subtitle'"
       [originalPublicationDate]="'2023-01-01'"
       [authors]="['Author One', 'Author Two']"
