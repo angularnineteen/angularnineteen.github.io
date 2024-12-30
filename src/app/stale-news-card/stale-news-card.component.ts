@@ -120,6 +120,7 @@ export class StaleNewsCardComponent {
     }
 
     effect(() => {
+      console.info(`Now storing ${this.currentIndex().toString()} as the value for current index`);
       localStorage.setItem('currentIndex', this.currentIndex().toString());
     });
   }
