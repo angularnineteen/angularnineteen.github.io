@@ -20,7 +20,7 @@ import { Component, input } from '@angular/core';
           }
         </div>
       </div>
-      <div class="flex gap-2 items-center">
+      <div class="increment-decrement-buttons">
         <button (click)="currentIndex = currentIndex - 1" class="btn">
           Decrement
         </button>
