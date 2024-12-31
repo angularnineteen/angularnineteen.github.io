@@ -2,11 +2,13 @@ import {
   Component,
   input,
   signal,
-  effect
+  effect,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="card">
       <p>The following is for debugging only: {{ currentIndex() }}</p>
@@ -129,6 +131,14 @@ export class StaleNewsCardComponent {
       console.info(`Now storing ${this.currentIndex().toString()} as the value for current index`);
       localStorage.setItem('currentIndex', this.currentIndex().toString());
     });
+  }
+
+  ngOnInit() {
+    const storedIndex = localStorage.getItem('currentIndex');
+    console.log(storedIndex);
+    if (storedIndex !== null) {
+      this.currentIndex.set(Number(storedIndex));
+    }
   }
 
   increment() {
