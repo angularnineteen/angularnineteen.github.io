@@ -2,11 +2,13 @@ import {
   Component,
   input,
   signal,
-  effect
+  effect,
+  ChangeDetectionStrategy
 } from '@angular/core';
 
 @Component({
   selector: 'app-stale-news-card',
+  changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="card">
       <p>The following is for debugging only: {{ currentIndex() }}</p>
