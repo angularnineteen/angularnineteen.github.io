@@ -133,6 +133,12 @@ export class StaleNewsCardComponent {
     });
   }
 
+  ngOnInit() {
+    setInterval(() => {
+      this.increment();
+    }, 1000);
+  }
+
   increment() {
     const storedIndex = localStorage.getItem('currentIndex');
     console.log(storedIndex);
