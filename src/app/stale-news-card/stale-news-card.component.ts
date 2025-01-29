@@ -11,7 +11,7 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="card">
-      <p>The following is for debugging only: {{ currentIndex() }}</p>
+      <span>The following is for debugging only: {{ currentIndex() }}</span>
       <h2>{{ title() }}</h2>
       <h3>{{ subtitle() }}</h3>
       <p><strong>Published on: </strong> {{ originalPublicationDate() }}</p>
