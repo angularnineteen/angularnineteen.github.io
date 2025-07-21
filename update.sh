@@ -1,127 +1,58 @@
-#!/bin/sh
+#!/bin/bash
+set -e  # Exit on error
 
-# Record the start date and time
-date
+# Configuration
+PROJECT_DIR="$HOME/src/myhtml/angularnineteen.github.io"
+LOG_PREFIX="[$(date '+%Y-%m-%d %H:%M:%S')]"
 
+log() {
+    echo "$LOG_PREFIX $1"
+}
+
+log "Starting update process"
+
+# Load NVM
 . ~/.nvm/nvm.sh
 
-# Navigate to the project directory
-cd ~/src/myhtml/angularnineteen.github.io/
+# Navigate to project directory
+cd "$PROJECT_DIR" || exit 1
 
-git pull --rebase origin master --strategy-option=theirs
-
-# Check and install Node Version Manager (NVM)
-nvm --version
+# Ensure we're on the latest LTS Node
 nvm install --lts
+nvm use --lts
 
-# Check versions of Node and NPM
-node --version
-npm --version
-
-# Install Yarn globally
-npm install --global yarn
-
-# Record the date and time
-date
-
-# Remove yarn.lock file
-rm yarn.lock
-
-# Record the date and time
-date
-
-# Install dependencies using Yarn
-time yarn
-
-# Record the date and time
-date
-
-# Fetch the latest changes from the remote repository
-git fetch
-
-# Check the status of the repository
-git status
-
-# Add all changes to staging
-git add .
-
-# Commit the changes with a message
-git commit --message "add all files" --message "update from terminal"
-
-# Pull the latest changes and rebase
+# Pull latest changes once
+log "Pulling latest changes"
+git fetch origin
 git pull --rebase origin master --strategy-option=theirs
 
-# Push the changes to the remote repository
-git push origin master
+# Install/update dependencies only if package.json changed
+if git diff HEAD@{1} --name-only | grep -q "package.json"; then
+    log "package.json changed, updating dependencies"
+    yarn install
+fi
 
-# Run Yarn
-yarn
+# Update Angular CLI and core if needed
+log "Checking for Angular updates"
+yarn run ng update @angular/core @angular/cli --force
 
-# Update Angular packages
-yarn run ng update
+# Build the project
+log "Building project"
+yarn run ng build --configuration=production
 
-# Build the Angular project
-yarn run ng build
+# Update browserslist if needed
+if command -v npx &> /dev/null; then
+    echo y | npx update-browserslist-db@latest
+fi
 
-# Fetch the latest changes from the remote repository
-git fetch
+# Commit and push all changes if any
+if ! git diff-index --quiet HEAD; then
+    log "Committing changes"
+    git add .
+    git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M')"
+    git push origin master
+else
+    log "No changes to commit"
+fi
 
-# Check the status of the repository
-git status
-
-# Add all changes to staging
-git add .
-
-# Commit the changes with a message
-git commit --message "add all files" --message "update from terminal"
-
-# Pull the latest changes and rebase
-git pull --rebase origin master
-
-# Push the changes to the remote repository
-git push origin master
-
-# Run tests
-yarn run ng test
-
-# Update specific Angular packages
-yarn run ng update @angular/core @angular/cli
-
-# Add all changes to staging
-git add .
-
-# Commit the changes with a message
-git commit --message "add all files" --message "update from terminal"
-
-# Pull the latest changes and rebase
-git pull --rebase origin master
-
-# Push the changes to the remote repository
-git push origin master
-
-# Update browserslist database
-echo y | npx update-browserslist-db@latest
-
-# Fetch the latest changes from the remote repository
-git fetch
-
-# Check the status of the repository
-git status
-
-# Add all changes to staging
-git add .
-
-# Commit the changes with a message
-git commit --message "add all files" --message "update from terminal"
-
-# Pull the latest changes and rebase
-git pull --rebase origin master
-
-# Push the changes to the remote repository
-git push origin --all
-
-# Show the remote repository details
-git remote show origin
-
-# Record the end date and time
-date
+log "Update process completed"
