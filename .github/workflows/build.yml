@@ -34,7 +34,14 @@ jobs:
       run: yarn ng version
       
     - name: Lint code
-      run: yarn ng lint
+      run: |
+        if yarn ng lint --help >/dev/null 2>&1; then
+          echo "Running linter..."
+          yarn ng lint
+        else
+          echo "Linting not configured. Skipping..."
+          echo "To add linting, run: ng add @angular-eslint/schematics"
+        fi
       continue-on-error: true  # Don't fail build on lint errors
       
     - name: Build application (development)
