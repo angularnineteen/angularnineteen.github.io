@@ -56,9 +56,17 @@ if ! git diff-index --quiet HEAD --; then
     log "Committing changes"
     git add .
     git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M')"
+fi
+
+# Push any unpushed commits
+if [ $(git rev-list --count @{u}..HEAD) -gt 0 ]; then
+    log "Pushing unpushed commits to remote"
+    git push origin master
+elif ! git diff-index --quiet HEAD --; then
+    # Only push if we just made a commit above
     git push origin master
 else
-    log "No changes to commit"
+    log "No changes to push"
 fi
 
 # Check if we had stashed changes and notify
