@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { StaleNewsCardComponent } from './stale-news-card.component';
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 describe('StaleNewsCardComponent', () => {
@@ -10,7 +10,7 @@ describe('StaleNewsCardComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CommonModule, StaleNewsCardComponent],
-      providers: [provideExperimentalZonelessChangeDetection()]
+      providers: [provideZonelessChangeDetection()]
     }).compileComponents();
   });
 

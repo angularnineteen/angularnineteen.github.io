@@ -1,5 +1,5 @@
 import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.component';
-import { provideExperimentalZonelessChangeDetection } from '@angular/core';
+import { provideZonelessChangeDetection } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { AppComponent } from './app.component';
 import { CommonModule } from '@angular/common'; // Import CommonModule
@@ -8,7 +8,7 @@ describe('AppComponent', () => {
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [CommonModule, AppComponent, StaleNewsCardComponent], // Import the standalone component
-      providers: [provideExperimentalZonelessChangeDetection()]
+      providers: [provideZonelessChangeDetection()]
     }).compileComponents();
   });
 
