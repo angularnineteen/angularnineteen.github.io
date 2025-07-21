@@ -58,12 +58,9 @@ if ! git diff-index --quiet HEAD --; then
     git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M')"
 fi
 
-# Push any unpushed commits
+# Check if there are unpushed commits and push them
 if [ $(git rev-list --count @{u}..HEAD) -gt 0 ]; then
     log "Pushing unpushed commits to remote"
-    git push origin master
-elif ! git diff-index --quiet HEAD --; then
-    # Only push if we just made a commit above
     git push origin master
 else
     log "No changes to push"
