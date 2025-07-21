@@ -21,6 +21,12 @@ cd "$PROJECT_DIR" || exit 1
 nvm install --lts
 nvm use --lts
 
+# Check for uncommitted changes first
+if ! git diff-index --quiet HEAD --; then
+    log "WARNING: Uncommitted changes detected. Stashing them."
+    git stash push -m "Automated stash before update $(date '+%Y-%m-%d %H:%M')"
+fi
+
 # Pull latest changes once
 log "Pulling latest changes"
 git fetch origin
@@ -46,13 +52,18 @@ if command -v npx &> /dev/null; then
 fi
 
 # Commit and push all changes if any
-if ! git diff-index --quiet HEAD; then
+if ! git diff-index --quiet HEAD --; then
     log "Committing changes"
     git add .
     git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M')"
     git push origin master
 else
     log "No changes to commit"
+fi
+
+# Check if we had stashed changes and notify
+if git stash list | grep -q "Automated stash before update"; then
+    log "WARNING: There are stashed changes. Run 'git stash pop' to restore them."
 fi
 
 log "Update process completed"

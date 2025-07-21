@@ -1,0 +1,146 @@
+Senior .NET Developer
+IvoryCloud
+6120 Executive Boulevard, Rockville, MD 20852
+Hybrid work
+$110,000 - $130,000 a year - Full-time
+
+Job details
+Here’s how the job details align with your profile.
+Pay $110,000 - $130,000 a year
+
+Job type Full-time
+
+Shift and schedule Monday to Friday
+
+Work setting Hybrid work
+
+Location 6120 Executive Boulevard, Rockville, MD 20852
+
+Benefits
+Pulled from the full job description
+
+    401(k)
+    401(k) matching
+    Dental insurance
+    Disability insurance
+    Flexible schedule
+    Health insurance
+    Life insurance
+    Paid time off
+    Paid training
+    Vision insurance
+
+Full job description
+
+The Senior .NET Developer will be in support of a federal client to rearchitect an existing application to remediate performance and functional issues to streamline business processes for our client’s core mission areas.
+
+Requirements
+
+    US Citizenship. This is non-negotiable
+    Active Public Trust or ability to obtain a Public Trust clearance.
+    Ability to pass multiple background and employment checks - both federal and local.
+
+Key Responsibilities
+
+    Accurately estimate effort by defining the technical approach for fixing defects, implementing changes, and/or building new functionality
+    Develop, document, unit test, and peer review software as required
+    Interface with Business Analysts and Software Testers to ensure a full understanding and fulfillment of requirements
+    Work closely with the development team to support Operations & Maintenance (O&M) and New Product Development activities.
+    Design and develop robust, scalable web applications using Angular, SQL, and ASP.NET.
+    Utilize practical experience in custom and complex enterprise-wide workflow-based systems.
+    Collaborate with the Development team and Department of Energy technical stakeholders to plan and execute the migration of the system to Azure GovCloud.
+    Participate in code reviews, providing constructive feedback to peers to ensure high-quality code.
+    Develop new system enhancements, CRs, and resolve defects to improve the application.
+    Stay updated with industry trends and technologies to ensure our solutions remain innovative and cutting-edge.
+    Optimize and maintain existing codebases, ensuring peak performance and scalability.
+    Implement defensive programming practices to enhance security and scalability.
+
+Experience
+
+    8+ years of professional experience in Asp .Net back-end development and SQL databases.
+    8+ years of professional experience in Angular, HTML, CSS, and JavaScript front-end technologies.
+    Proven expertise in managing large-scale projects and executing cloud migrations.
+    Excellent problem-solving abilities and meticulous attention to detail.
+    Effective communicator with cross-functional teams and stakeholders.
+    Proficient in .Net, C#, T-SQL, Angular, JavaScript, TypeScript, Node.js, HTML, CSS, NPM, Webpack, Bootstrap, EF, RegEx, and LINQ.
+    Solid understanding of Object-Oriented Programming (OOP), SOLID principles, Event-Driven Architecture, Microservices, Restful API, Git, CI/CD, Testing and QA practices, Responsive Web Design, and Output Encoding.
+    Expertise in Secure Coding practices, Input validation (SQL injection, XSS), Role-Based Access Control (RBAC), Multi-Factor Authentication (MFA), Active Directory integration, Authentication and Authorization protocols (OAuth, JWT), Error handling, Logging, Cloud architecture principles, Azure Functions, App Services, Docker, Kubernetes, Azure Security Center, Key Vault, VM, API Gateway, Monitoring tools, Azure migration strategies, AI tools, and agile delivery methodologies.
+
+Education
+
+    Bachelor's Degree in Computer Science or related field required
+    Azure Architect Certification highly preferred
+
+About IvoryCloud
+
+IvoryCloud is a purpose-driven enterprise. We go to work every day driven to achieve for our customers, learn and master new skills, and take ownership in growing those around us. Through this purpose, we do outstanding, innovative, and high-quality work. We are building our team with a relentless focus on bettering our customers, building personal capability, and investing in the success of others. You’re a purpose-driven professional if the following describes you:
+
+    Driven by team and personal excellence
+    Total focus on becoming a Subject Matter Expert wherever you are applied
+    Flexible thinker who solves problems with both linear and non-linear approaches
+    Unwavering commitment to exceeding customer expectations and thereby delivering success
+    Completely committed to co-worker/team development, growth, and success
+    Consultative in nature (as our customers are very involved in our processes and outcomes)
+    Never satisfied with the status quo – always looking for ways to improve – especially when things are “going well”
+    Excited to be a part of a growing company and committed to pitching in to help it succeed.
+
+Benefits
+
+We offer a competitive and comprehensive benefits package including, but not limited to:
+
+    Competitive salary with performance-based bonus opportunities
+    Single and Family Health Insurance plans, including Dental coverage
+    Short-Term and Long-Term disability
+    Matching 401(k)
+    Competitive Paid Time Off
+    Training and Certification opportunities eligible for expense reimbursement
+    Team building and social activities
+    Mentor program to help you develop your career
+
+Legal
+
+    IvoryCloud is an Equal Opportunity Employer (EEO)
+    Job Type: Full-time
+
+Job Type: Full-time
+
+Pay: $110,000.00 - $130,000.00 per year
+
+Benefits:
+
+    401(k)
+    Dental insurance
+    Flexible schedule
+    Health insurance
+    Life insurance
+    Paid time off
+    Vision insurance
+
+Compensation Package:
+
+    Bonus opportunities
+    Yearly pay
+
+Schedule:
+
+    Monday to Friday
+
+Application Question(s):
+
+    Are you able and willing to commute to our office in Rockville, MD, or our client site in Washington, DC, two days a week?
+    REQUIRED: Please provide your LinkedIn Profile link
+    Do you have an active government clearance? If so, what level?
+    Are you a U.S. Citizen? This requirement is non negotiable.
+
+Experience:
+
+    Back-end development: 8 years (Required)
+    .NET: 8 years (Required)
+    Front-end development: 8 years (Required)
+    Azure: 8 years (Preferred)
+
+Work Location: Hybrid remote in Rockville, MD 20852
+If you require alternative methods of application or screening, you must approach the employer directly to request this as Indeed is not responsible for the employer's application process.
+Senior .NET Developer jobs in Rockville, MD
+
+https://www.indeed.com/viewjob?jk=ede6cb7059214429
