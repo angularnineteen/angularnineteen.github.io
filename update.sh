@@ -55,7 +55,7 @@ fi
 if ! git diff-index --quiet HEAD --; then
     log "Committing changes"
     git add .
-    git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M')"
+    git commit -m "Automated update: $(date '+%Y-%m-%d %H:%M')" || true
 fi
 
 # Check if there are unpushed commits and push them
