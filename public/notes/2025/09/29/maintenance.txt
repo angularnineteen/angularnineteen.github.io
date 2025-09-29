@@ -1,0 +1,1106 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\kusha>
+PS C:\Users\kusha> ssh kushal@192.168.0.76
+kushal@192.168.0.76's password:
+Linux virginia 6.12.43+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.43-1 (2025-08-27) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Mon Sep 29 08:26:05 2025 from 192.168.0.229
+kushal@virginia:~$ sudo date; cat ~/mybashscripts/maintenance.sh; time sudo bash  ~/mybashscripts/maintenance.sh; date;
+[sudo] password for kushal:
+Mon Sep 29 09:15:25 AM EDT 2025
+#!/bin/bash
+
+# Virginia Server Maintenance Script
+# Optimized for video recording server with continuous ffmpeg processes
+# Run with: sudo bash ~/mybashscripts/maintenance.sh
+
+set -e  # Exit on any error
+
+echo "========================================"
+echo "Virginia Maintenance Script"
+echo "========================================"
+date
+echo
+
+# Function to print section headers
+print_section() {
+    echo
+    echo "----------------------------------------"
+    echo "$1"
+    echo "----------------------------------------"
+    date
+}
+
+# Check if running as root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root (use sudo)"
+   exit 1
+fi
+
+# Quick system status
+print_section "Pre-maintenance system status"
+echo "Kernel: $(uname -r)"
+echo "Uptime: $(uptime -p)"
+echo "Failed units: $(systemctl list-units --failed --no-pager 2>/dev/null | grep -c 'loaded units' || echo 0)"
+echo "Memory: $(free -h | grep Mem | awk '{print "Used: "$3"/"$2}')"
+echo "Swap: $(free -h | grep Swap | awk '{print "Used: "$3"/"$2}')"
+echo "Root FS: $(df -h / | tail -1 | awk '{print "Used: "$3"/"$2" ("$5")"}')"
+
+# Check available disk space
+print_section "Checking disk space"
+AVAILABLE_SPACE=$(df / | tail -1 | awk '{print $4}')
+AVAILABLE_GB=$((AVAILABLE_SPACE / 1048576))
+echo "Available space: ${AVAILABLE_GB}GB"
+
+if [ "$AVAILABLE_SPACE" -lt 5242880 ]; then  # Less than 5GB
+    echo "WARNING: Less than 5GB free space available!"
+
+    # Check recording directories for cleanup opportunities
+    echo "Recording directories:"
+    for dir in /home/kushal/{jennev,myfrontdoor,tapo}; do
+        if [ -d "$dir" ]; then
+            SIZE=$(du -sh "$dir" 2>/dev/null | cut -f1)
+            echo "  $(basename $dir): $SIZE"
+        fi
+    done
+fi
+
+# Update package lists
+print_section "Updating package lists"
+apt update -y
+
+# Show available upgrades
+print_section "Checking for available upgrades"
+UPGRADABLE=$(apt list --upgradable 2>/dev/null | grep -v "Listing" | wc -l)
+if [ "$UPGRADABLE" -gt 0 ]; then
+    echo "$UPGRADABLE packages can be upgraded:"
+    apt list --upgradable 2>/dev/null | head -10
+else
+    echo "All packages are up to date"
+fi
+
+# Check for kernel updates
+KERNEL_UPDATE=$(apt list --upgradable 2>/dev/null | grep -i linux-image || true)
+KERNEL_UPDATE_FLAG=false
+if [ -n "$KERNEL_UPDATE" ]; then
+    echo "*** KERNEL UPDATE AVAILABLE ***"
+    KERNEL_UPDATE_FLAG=true
+fi
+
+# Upgrade packages
+if [ "$UPGRADABLE" -gt 0 ]; then
+    print_section "Upgrading packages"
+    DEBIAN_FRONTEND=noninteractive apt upgrade -y
+    DEBIAN_FRONTEND=noninteractive apt full-upgrade -y
+
+    # Show FFmpeg version after upgrade
+    echo "FFmpeg version: $(ffmpeg -version 2>&1 | head -1 | awk '{print $3}')"
+fi
+
+# Clean up
+print_section "Cleaning package cache"
+apt autoremove -y
+apt autoclean
+
+# Camera connectivity check
+print_section "Camera connectivity check"
+echo "Testing camera connections:"
+# Jennev camera
+if timeout 2 nc -zv 192.168.0.34 554 &>/dev/null; then
+    echo "  ✓ Jennev (192.168.0.34:554)"
+else
+    echo "  ✗ Jennev (192.168.0.34:554) - NOT REACHABLE"
+fi
+
+# Front door camera
+if timeout 2 nc -zv 192.168.0.65 554 &>/dev/null; then
+    echo "  ✓ Front Door (192.168.0.65:554)"
+else
+    echo "  ✗ Front Door (192.168.0.65:554) - NOT REACHABLE"
+fi
+
+# Tapo camera
+if timeout 2 nc -zv 192.168.0.218 554 &>/dev/null; then
+    echo "  ✓ Tapo (192.168.0.218:554)"
+else
+    echo "  ✗ Tapo (192.168.0.218:554) - NOT REACHABLE"
+fi
+
+# Video recording health check
+print_section "Recording processes status"
+FFMPEG_COUNT=$(pgrep -af ffmpeg | grep -E "(jennev|myfrontdoor|tapo)" | wc -l)
+echo "Active ffmpeg processes: $FFMPEG_COUNT"
+
+if [ "$FFMPEG_COUNT" -gt 0 ]; then
+    echo "Recording processes by camera:"
+
+    # Check Jennev
+    if pgrep -af ffmpeg | grep jennev > /dev/null 2>&1; then
+        echo "  ✓ Jennev recording active"
+    else
+        echo "  ✗ Jennev recording NOT active"
+    fi
+
+    # Check Front Door
+    if pgrep -af ffmpeg | grep myfrontdoor > /dev/null 2>&1; then
+        echo "  ✓ Front Door recording active"
+    else
+        echo "  ✗ Front Door recording NOT active"
+    fi
+
+    # Check Tapo with schedule awareness
+    if pgrep -af ffmpeg | grep tapo > /dev/null 2>&1; then
+        echo "  ✓ Tapo recording active"
+    else
+        echo "  ✗ Tapo recording NOT active"
+        # Check if it should be running based on schedule (2, 10, 18 hours)
+        HOUR=$(date +%H)
+        MINUTE=$(date +%M)
+        if { [ "$HOUR" -eq 2 ] || [ "$HOUR" -eq 10 ] || [ "$HOUR" -eq 18 ]; } && [ "$MINUTE" -lt 10 ]; then
+            echo "    ⚠ Tapo should be recording at this hour but isn't"
+        fi
+    fi
+fi
+
+# Recording storage check
+print_section "Recording storage status"
+TOTAL_VIDEOS=0
+STALE_RECORDINGS=0
+
+for dir in /home/kushal/{jennev,myfrontdoor,tapo}; do
+    if [ -d "$dir" ]; then
+        SIZE=$(du -sh "$dir" 2>/dev/null | cut -f1)
+        COUNT=$(find "$dir" -name "*.mp4" 2>/dev/null | wc -l)
+        OLD_COUNT=$(find "$dir" -name "*.mp4" -mtime +7 2>/dev/null | wc -l)
+        TOTAL_VIDEOS=$((TOTAL_VIDEOS + COUNT))
+        echo "$(basename $dir):"
+        echo "  Size: $SIZE"
+        echo "  Videos: $COUNT total, $OLD_COUNT older than 7 days"
+
+        # Get latest recording timestamp and check for staleness
+        LATEST=$(ls -t "$dir"/*.mp4 2>/dev/null | head -1)
+        if [ -n "$LATEST" ]; then
+            LATEST_TIME=$(stat -c %y "$LATEST" | cut -d'.' -f1)
+            echo "  Latest: $LATEST_TIME"
+
+            # Check if recording is stale
+            LATEST_EPOCH=$(stat -c %Y "$LATEST")
+            CURRENT_EPOCH=$(date +%s)
+            AGE_MINUTES=$(( (CURRENT_EPOCH - LATEST_EPOCH) / 60 ))
+
+            # Different thresholds for different cameras
+            STALE_THRESHOLD=480  # 8 hours default
+            if [ "$(basename $dir)" = "tapo" ]; then
+                STALE_THRESHOLD=600  # 10 hours for Tapo (runs every 8 hours)
+            fi
+
+            if [ "$AGE_MINUTES" -gt "$STALE_THRESHOLD" ]; then
+                echo "  ⚠ WARNING: Latest recording is $AGE_MINUTES minutes old"
+                STALE_RECORDINGS=$((STALE_RECORDINGS + 1))
+            fi
+        fi
+    fi
+done
+echo "Total videos: $TOTAL_VIDEOS"
+
+# Optional: Clean old recordings (uncomment to enable)
+# print_section "Cleaning old recordings"
+# CLEANUP_DAYS=14
+# for dir in /home/kushal/{jennev,myfrontdoor,tapo}; do
+#     if [ -d "$dir" ]; then
+#         OLD_COUNT=$(find "$dir" -name "*.mp4" -mtime +$CLEANUP_DAYS 2>/dev/null | wc -l)
+#         if [ "$OLD_COUNT" -gt 0 ]; then
+#             echo "Removing $OLD_COUNT files older than $CLEANUP_DAYS days from $(basename $dir)..."
+#             find "$dir" -name "*.mp4" -mtime +$CLEANUP_DAYS -delete
+#         fi
+#     fi
+# done
+
+# Memory pressure check
+print_section "Memory analysis"
+SWAP_USED=$(free -m | grep Swap | awk '{print $3}')
+if [ "$SWAP_USED" -gt 100 ]; then
+    echo "WARNING: High swap usage detected (${SWAP_USED}MB)"
+    echo "Top 5 memory consumers:"
+    ps aux --sort=-%mem | head -6 | tail -5 | awk '{printf "  %-20s %5s%%\n", $11, $4}'
+else
+    echo "Swap usage: ${SWAP_USED}MB (normal)"
+fi
+
+# Check for reboot requirement
+print_section "Reboot check"
+REBOOT_REQUIRED=false
+
+if [ -f /var/run/reboot-required ]; then
+    echo "*** REBOOT REQUIRED ***"
+    if [ -f /var/run/reboot-required.pkgs ]; then
+        echo "Packages requiring reboot:"
+        cat /var/run/reboot-required.pkgs | sed 's/^/  /'
+    fi
+    REBOOT_REQUIRED=true
+elif [ "$KERNEL_UPDATE_FLAG" = true ]; then
+    echo "*** REBOOT RECOMMENDED for kernel update ***"
+    REBOOT_REQUIRED=true
+else
+    echo "No reboot required"
+fi
+
+# Scheduled jobs verification
+print_section "Cron job verification"
+echo "Recording schedules:"
+for script in jennev myfrontdoor tapo; do
+    # Run crontab -l as the kushal user
+    CRON_LINE=$(su - kushal -c "crontab -l 2>/dev/null" | grep "$script" | head -1)
+    if [ -n "$CRON_LINE" ]; then
+        SCHEDULE=$(echo "$CRON_LINE" | awk '{print $1" "$2" "$3" "$4" "$5}')
+        echo "  $script.sh - Schedule: $SCHEDULE"
+    fi
+done
+
+# System information summary
+print_section "Post-maintenance summary"
+echo "Hostname: $(hostname)"
+echo "Debian: $(cat /etc/debian_version)"
+echo "Kernel: $(uname -r)"
+echo "Uptime: $(uptime -p)"
+echo "Load: $(uptime | awk -F'load average:' '{print $2}')"
+echo "Memory: $(free -h | grep Mem | awk '{print "Used: "$3"/"$2" (Available: "$7")"}')"
+echo "Disk: $(df -h / | tail -1 | awk '{print "Used: "$3"/"$2" ("$5")"}')"
+
+# Final checks
+print_section "Final system checks"
+BROKEN_PACKAGES=$(dpkg --audit 2>/dev/null | wc -l)
+if [ "$BROKEN_PACKAGES" -gt 0 ]; then
+    echo "WARNING: $BROKEN_PACKAGES broken packages detected"
+    echo "Run: apt --fix-broken install"
+else
+    echo "✓ No broken packages"
+fi
+
+FAILED_SERVICES=$(systemctl list-units --failed --no-pager 2>/dev/null | grep "loaded units listed" | awk '{print $1}')
+if [ "$FAILED_SERVICES" != "0" ] && [ -n "$FAILED_SERVICES" ]; then
+    echo "WARNING: Failed services detected:"
+    systemctl list-units --failed --no-pager
+else
+    echo "✓ All services running normally"
+fi
+
+# Health Score Summary
+print_section "Health Score"
+ISSUES=0
+WARNINGS=""
+
+# Check recording processes
+EXPECTED_PROCESSES=2  # At minimum, jennev and myfrontdoor should always be running
+if [ "$FFMPEG_COUNT" -lt "$EXPECTED_PROCESSES" ]; then
+    ISSUES=$((ISSUES + 1))
+    WARNINGS="${WARNINGS}- Recording processes below expected (found $FFMPEG_COUNT, expected at least $EXPECTED_PROCESSES)\n"
+fi
+
+# Check for stale recordings
+if [ "$STALE_RECORDINGS" -gt 0 ]; then
+    ISSUES=$((ISSUES + 1))
+    WARNINGS="${WARNINGS}- $STALE_RECORDINGS camera(s) have stale recordings\n"
+fi
+
+# Check swap usage
+if [ "$SWAP_USED" -gt 1000 ]; then
+    ISSUES=$((ISSUES + 1))
+    WARNINGS="${WARNINGS}- High swap usage (${SWAP_USED}MB)\n"
+fi
+
+# Check disk space
+if [ "$AVAILABLE_GB" -lt 100 ]; then
+    ISSUES=$((ISSUES + 1))
+    WARNINGS="${WARNINGS}- Low disk space (${AVAILABLE_GB}GB available)\n"
+fi
+
+# Check if reboot needed
+if [ "$REBOOT_REQUIRED" = true ]; then
+    ISSUES=$((ISSUES + 1))
+    WARNINGS="${WARNINGS}- System reboot required\n"
+fi
+
+# Display health score
+if [ "$ISSUES" -eq 0 ]; then
+    echo "★★★★★ System healthy - All checks passed"
+else
+    echo "Issues found:"
+    echo -e "$WARNINGS"
+    case $ISSUES in
+        1) echo "★★★★☆ System status: Good (1 minor issue)" ;;
+        2) echo "★★★☆☆ System status: Fair (2 issues need attention)" ;;
+        3) echo "★★☆☆☆ System status: Poor (3 issues need attention)" ;;
+        *) echo "★☆☆☆☆ System status: Critical ($ISSUES issues need immediate attention)" ;;
+    esac
+fi
+
+# Log completion
+echo
+echo "========================================"
+echo "Maintenance completed successfully"
+if [ "$REBOOT_REQUIRED" = true ]; then
+    echo "*** REMEMBER TO REBOOT WHEN CONVENIENT ***"
+fi
+echo "========================================"
+date
+========================================
+Virginia Maintenance Script
+========================================
+Mon Sep 29 09:15:25 AM EDT 2025
+
+
+----------------------------------------
+Pre-maintenance system status
+----------------------------------------
+Mon Sep 29 09:15:25 AM EDT 2025
+Kernel: 6.12.43+deb13-amd64
+Uptime: up 3 weeks, 22 hours, 39 minutes
+Failed units: 1
+Memory: Used: 1.6Gi/62Gi
+Swap: Used: 512Ki/47Gi
+Root FS: Used: 61G/1.8T (4%)
+
+----------------------------------------
+Checking disk space
+----------------------------------------
+Mon Sep 29 09:15:25 AM EDT 2025
+Available space: 1642GB
+
+----------------------------------------
+Updating package lists
+----------------------------------------
+Mon Sep 29 09:15:25 AM EDT 2025
+Hit:1 http://deb.debian.org/debian trixie InRelease
+Hit:2 http://deb.debian.org/debian trixie-updates InRelease
+Hit:3 http://security.debian.org/debian-security trixie-security InRelease
+All packages are up to date.
+
+----------------------------------------
+Checking for available upgrades
+----------------------------------------
+Mon Sep 29 09:15:26 AM EDT 2025
+All packages are up to date
+
+----------------------------------------
+Cleaning package cache
+----------------------------------------
+Mon Sep 29 09:15:27 AM EDT 2025
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+
+----------------------------------------
+Camera connectivity check
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+Testing camera connections:
+  ✓ Jennev (192.168.0.34:554)
+  ✓ Front Door (192.168.0.65:554)
+  ✓ Tapo (192.168.0.218:554)
+
+----------------------------------------
+Recording processes status
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+Active ffmpeg processes: 26
+Recording processes by camera:
+  ✓ Jennev recording active
+  ✗ Front Door recording NOT active
+  ✗ Tapo recording NOT active
+
+----------------------------------------
+Recording storage status
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+jennev:
+  Size: 27G
+  Videos: 29 total, 0 older than 7 days
+  Latest: 2025-09-29 09:15:27
+myfrontdoor:
+  Size: 852M
+  Videos: 14 total, 1 older than 7 days
+  Latest: 2025-09-29 08:26:15
+tapo:
+  Size: 24G
+  Videos: 18 total, 2 older than 7 days
+  Latest: 2025-09-29 02:10:04
+Total videos: 61
+
+----------------------------------------
+Memory analysis
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+Swap usage: 0MB (normal)
+
+----------------------------------------
+Reboot check
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+No reboot required
+
+----------------------------------------
+Cron job verification
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+Recording schedules:
+  jennev.sh - Schedule: 0 */8 * * *
+  myfrontdoor.sh - Schedule: 0 4,12,20 * * *
+  tapo.sh - Schedule: 5 2,10,18 * * *
+
+----------------------------------------
+Post-maintenance summary
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+Hostname: virginia
+Debian: 13.1
+Kernel: 6.12.43+deb13-amd64
+Uptime: up 3 weeks, 22 hours, 39 minutes
+Load:  0.00, 0.00, 0.00
+Memory: Used: 1.6Gi/62Gi (Available: 61Gi)
+Disk: Used: 61G/1.8T (4%)
+
+----------------------------------------
+Final system checks
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+✓ No broken packages
+✓ All services running normally
+
+----------------------------------------
+Health Score
+----------------------------------------
+Mon Sep 29 09:15:28 AM EDT 2025
+★★★★★ System healthy - All checks passed
+
+========================================
+Maintenance completed successfully
+========================================
+Mon Sep 29 09:15:28 AM EDT 2025
+
+real    0m3.383s
+user    0m0.013s
+sys     0m0.014s
+Mon Sep 29 09:15:28 AM EDT 2025
+kushal@virginia:~$
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\kusha> ssh kushal@192.168.0.120
+kushal@192.168.0.120's password:
+Linux texas 6.12.48+deb13-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.12.48-1 (2025-09-20) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Mon Sep 29 08:26:22 2025 from 192.168.0.229
+kushal@texas:~$ sudo date; cat ~/mybashscripts/maintenance.sh; time sudo bash ~/mybashscripts/maintenance.sh; date;
+[sudo] password for kushal:
+Mon Sep 29 09:15:41 AM EDT 2025
+#!/bin/bash
+
+# Debian System and Pi-hole Maintenance Script
+# This script updates the system packages and Pi-hole blocklists
+# For texas: Run with sudo
+# For trixiepi: Run as root (use 'su -' to become root)
+
+set -e  # Exit on any error
+
+echo "========================================"
+echo "Starting Debian Maintenance Script"
+echo "========================================"
+date
+echo
+
+# Function to print section headers
+print_section() {
+    echo
+    echo "----------------------------------------"
+    echo "$1"
+    echo "----------------------------------------"
+    date
+}
+
+# Check if running as root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root."
+   echo "For texas: use 'sudo ./maintenance.sh'"
+   echo "For trixiepi: use 'su -' then run './maintenance.sh'"
+   exit 1
+fi
+
+# Check available disk space before starting
+print_section "Checking disk space before maintenance"
+echo "Current disk usage:"
+df -h / | head -2
+AVAILABLE_SPACE=$(df / | tail -1 | awk '{print $4}')
+if [ "$AVAILABLE_SPACE" -lt 1048576 ]; then  # Less than 1GB
+    echo "WARNING: Less than 1GB free space available!"
+    echo "Consider freeing up space before continuing."
+    read -p "Continue anyway? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Maintenance cancelled."
+        exit 1
+    fi
+fi
+
+# Update package lists
+print_section "Updating package lists"
+apt update -y
+
+# Show available upgrades
+print_section "Checking for available upgrades"
+apt list --upgradable
+
+# Check for kernel updates specifically
+KERNEL_UPDATE=$(apt list --upgradable 2>/dev/null | grep -i linux-image || true)
+if [ -n "$KERNEL_UPDATE" ]; then
+    echo "*** KERNEL UPDATE DETECTED ***"
+    echo "The following kernel packages will be updated:"
+    echo "$KERNEL_UPDATE"
+    echo "A reboot will be recommended after completion."
+    echo
+fi
+
+# Upgrade all packages non-interactively
+print_section "Upgrading all packages"
+DEBIAN_FRONTEND=noninteractive apt upgrade -y
+
+# Perform full-upgrade (handles dependency changes)
+print_section "Performing full-upgrade"
+DEBIAN_FRONTEND=noninteractive apt full-upgrade -y
+
+# Remove unnecessary packages
+print_section "Removing unnecessary packages"
+apt autoremove -y
+
+# Clean package cache
+print_section "Cleaning package cache"
+apt autoclean
+
+# Update Pi-hole gravity (blocklists) with log rotation
+print_section "Updating Pi-hole gravity database"
+if command -v pihole &> /dev/null; then
+    # Check if we need to rotate large Pi-hole logs
+    if [ -f /var/log/pihole.log ] && [ $(stat -c%s /var/log/pihole.log) -gt 52428800 ]; then  # 50MB
+        echo "Rotating large Pi-hole log file..."
+        logrotate -f /etc/logrotate.d/pihole-FTL 2>/dev/null || true
+    fi
+
+    echo "Updating Pi-hole blocklists..."
+    pihole -g
+else
+    echo "Pi-hole not found - skipping Pi-hole update"
+fi
+
+# Check for reboot requirement
+print_section "Checking if reboot is required"
+REBOOT_REQUIRED=false
+
+if [ -f /var/run/reboot-required ]; then
+    echo "*** REBOOT REQUIRED ***"
+    echo "The following packages require a reboot:"
+    if [ -f /var/run/reboot-required.pkgs ]; then
+        cat /var/run/reboot-required.pkgs
+    fi
+    REBOOT_REQUIRED=true
+elif [ -n "$KERNEL_UPDATE" ]; then
+    echo "*** REBOOT RECOMMENDED ***"
+    echo "Kernel was updated - reboot recommended for new kernel."
+    REBOOT_REQUIRED=true
+else
+    echo "No reboot required."
+fi
+
+# Offer reboot option if needed
+if [ "$REBOOT_REQUIRED" = true ]; then
+    echo
+    read -p "Would you like to reboot now? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Rebooting in 5 seconds... (Ctrl+C to cancel)"
+        sleep 5
+        reboot
+    else
+        echo "Please remember to reboot when convenient."
+    fi
+fi
+
+# Show system information after maintenance
+print_section "System information after maintenance"
+echo "Hostname: $(hostname)"
+echo "Debian version: $(cat /etc/debian_version)"
+echo "Kernel version: $(uname -r)"
+echo "Uptime: $(uptime -p)"
+echo "Memory usage:"
+free -h | head -2
+echo "Disk usage after cleanup:"
+df -h / | tail -1
+
+# Check for any remaining issues
+print_section "Final system check"
+echo "Checking for broken packages..."
+BROKEN_PACKAGES=$(dpkg --audit 2>/dev/null | wc -l)
+HELD_PACKAGES=$(apt-mark showhold | wc -l)
+
+if [ "$BROKEN_PACKAGES" -gt 0 ]; then
+    echo "WARNING: Found $BROKEN_PACKAGES broken packages."
+    echo "You may want to run: apt --fix-broken install"
+elif [ "$HELD_PACKAGES" -gt 0 ]; then
+    echo "INFO: $HELD_PACKAGES packages are held back."
+    echo "Run 'apt-mark showhold' to see held packages."
+else
+    echo "No broken packages detected."
+fi
+
+# Check for leftover config files
+LEFTOVER_CONFIGS=$(dpkg -l | grep "^rc" | wc -l)
+if [ "$LEFTOVER_CONFIGS" -gt 0 ]; then
+    echo "INFO: $LEFTOVER_CONFIGS packages have leftover config files."
+    echo "Run 'dpkg --purge \$(dpkg -l | grep \"^rc\" | awk '{print \$2}')' to clean them."
+fi
+
+# Show space freed
+SPACE_AFTER=$(df / | tail -1 | awk '{print $4}')
+SPACE_FREED=$((SPACE_AFTER - AVAILABLE_SPACE))
+if [ "$SPACE_FREED" -gt 0 ]; then
+    echo "Space freed: $(echo $SPACE_FREED | awk '{printf "%.1f MB", $1/1024}')"
+fi
+
+# Final timestamp
+echo
+echo "========================================"
+echo "Maintenance script completed successfully"
+echo "========================================"
+date
+========================================
+Starting Debian Maintenance Script
+========================================
+Mon Sep 29 09:15:41 AM EDT 2025
+
+
+----------------------------------------
+Checking disk space before maintenance
+----------------------------------------
+Mon Sep 29 09:15:41 AM EDT 2025
+Current disk usage:
+Filesystem                  Size  Used Avail Use% Mounted on
+/dev/mapper/texas--vg-root  456G  144G  290G  34% /
+
+----------------------------------------
+Updating package lists
+----------------------------------------
+Mon Sep 29 09:15:41 AM EDT 2025
+Hit:1 http://security.debian.org/debian-security trixie-security InRelease
+Hit:2 http://deb.debian.org/debian trixie InRelease
+Hit:3 http://deb.debian.org/debian trixie-updates InRelease
+All packages are up to date.
+
+----------------------------------------
+Checking for available upgrades
+----------------------------------------
+Mon Sep 29 09:15:42 AM EDT 2025
+
+----------------------------------------
+Upgrading all packages
+----------------------------------------
+Mon Sep 29 09:15:43 AM EDT 2025
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+
+----------------------------------------
+Performing full-upgrade
+----------------------------------------
+Mon Sep 29 09:15:44 AM EDT 2025
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+
+----------------------------------------
+Removing unnecessary packages
+----------------------------------------
+Mon Sep 29 09:15:45 AM EDT 2025
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+
+----------------------------------------
+Cleaning package cache
+----------------------------------------
+Mon Sep 29 09:15:46 AM EDT 2025
+
+----------------------------------------
+Updating Pi-hole gravity database
+----------------------------------------
+Mon Sep 29 09:15:47 AM EDT 2025
+Pi-hole not found - skipping Pi-hole update
+
+----------------------------------------
+Checking if reboot is required
+----------------------------------------
+Mon Sep 29 09:15:47 AM EDT 2025
+No reboot required.
+
+----------------------------------------
+System information after maintenance
+----------------------------------------
+Mon Sep 29 09:15:47 AM EDT 2025
+Hostname: texas
+Debian version: 13.1
+Kernel version: 6.12.48+deb13-amd64
+Uptime: up 6 days, 2 hours, 7 minutes
+Memory usage:
+               total        used        free      shared  buff/cache   available
+Mem:            15Gi       503Mi        14Gi       804Ki       528Mi        14Gi
+Disk usage after cleanup:
+/dev/mapper/texas--vg-root  456G  144G  290G  34% /
+
+----------------------------------------
+Final system check
+----------------------------------------
+Mon Sep 29 09:15:47 AM EDT 2025
+Checking for broken packages...
+No broken packages detected.
+INFO: 2 packages have leftover config files.
+Run 'dpkg --purge $(dpkg -l | grep "^rc" | awk '{print $2}')' to clean them.
+Space freed: 0.0 MB
+
+========================================
+Maintenance script completed successfully
+========================================
+Mon Sep 29 09:15:47 AM EDT 2025
+
+real    0m5.919s
+user    0m0.008s
+sys     0m0.020s
+Mon Sep 29 09:15:47 AM EDT 2025
+kushal@texas:~$
+
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\kusha> ssh kushal@192.168.0.233
+kushal@192.168.0.233's password:
+Linux colorado 6.1.0-39-amd64 #1 SMP PREEMPT_DYNAMIC Debian 6.1.148-1 (2025-08-26) x86_64
+
+The programs included with the Debian GNU/Linux system are free software;
+the exact distribution terms for each program are described in the
+individual files in /usr/share/doc/*/copyright.
+
+Debian GNU/Linux comes with ABSOLUTELY NO WARRANTY, to the extent
+permitted by applicable law.
+Last login: Mon Sep 29 08:26:51 2025 from 192.168.0.229
+kushal@colorado:~$ sudo date; cat ~/mybashscripts/maintenance.sh; time sudo bash ~/mybashscripts/maintenance.sh; date;
+[sudo] password for kushal:
+Mon Sep 29 09:16:01 AM EDT 2025
+#!/bin/bash
+
+# Debian System and Pi-hole Maintenance Script
+# This script updates the system packages and Pi-hole blocklists
+# For texas: Run with sudo
+# For trixiepi: Run as root (use 'su -' to become root)
+
+set -e  # Exit on any error
+
+echo "========================================"
+echo "Starting Debian Maintenance Script"
+echo "========================================"
+date
+echo
+
+# Function to print section headers
+print_section() {
+    echo
+    echo "----------------------------------------"
+    echo "$1"
+    echo "----------------------------------------"
+    date
+}
+
+# Check if running as root
+if [[ $EUID -ne 0 ]]; then
+   echo "This script must be run as root."
+   echo "For texas: use 'sudo ./maintenance.sh'"
+   echo "For trixiepi: use 'su -' then run './maintenance.sh'"
+   exit 1
+fi
+
+# Check available disk space before starting
+print_section "Checking disk space before maintenance"
+echo "Current disk usage:"
+df -h / | head -2
+AVAILABLE_SPACE=$(df / | tail -1 | awk '{print $4}')
+if [ "$AVAILABLE_SPACE" -lt 1048576 ]; then  # Less than 1GB
+    echo "WARNING: Less than 1GB free space available!"
+    echo "Consider freeing up space before continuing."
+    read -p "Continue anyway? (y/N): " -n 1 -r
+    echo
+    if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+        echo "Maintenance cancelled."
+        exit 1
+    fi
+fi
+
+# Update package lists
+print_section "Updating package lists"
+apt update -y
+
+# Show available upgrades
+print_section "Checking for available upgrades"
+apt list --upgradable
+
+# Check for kernel updates specifically
+KERNEL_UPDATE=$(apt list --upgradable 2>/dev/null | grep -i linux-image || true)
+if [ -n "$KERNEL_UPDATE" ]; then
+    echo "*** KERNEL UPDATE DETECTED ***"
+    echo "The following kernel packages will be updated:"
+    echo "$KERNEL_UPDATE"
+    echo "A reboot will be recommended after completion."
+    echo
+fi
+
+# Upgrade all packages non-interactively
+print_section "Upgrading all packages"
+DEBIAN_FRONTEND=noninteractive apt upgrade -y
+
+# Perform full-upgrade (handles dependency changes)
+print_section "Performing full-upgrade"
+DEBIAN_FRONTEND=noninteractive apt full-upgrade -y
+
+# Remove unnecessary packages
+print_section "Removing unnecessary packages"
+apt autoremove -y
+
+# Clean package cache
+print_section "Cleaning package cache"
+apt autoclean
+
+# Update Pi-hole gravity (blocklists) with log rotation
+print_section "Updating Pi-hole gravity database"
+if command -v pihole &> /dev/null; then
+    # Check if we need to rotate large Pi-hole logs
+    if [ -f /var/log/pihole.log ] && [ $(stat -c%s /var/log/pihole.log) -gt 52428800 ]; then  # 50MB
+        echo "Rotating large Pi-hole log file..."
+        logrotate -f /etc/logrotate.d/pihole-FTL 2>/dev/null || true
+    fi
+
+    echo "Updating Pi-hole blocklists..."
+    pihole -g
+else
+    echo "Pi-hole not found - skipping Pi-hole update"
+fi
+
+# Check for reboot requirement
+print_section "Checking if reboot is required"
+REBOOT_REQUIRED=false
+
+if [ -f /var/run/reboot-required ]; then
+    echo "*** REBOOT REQUIRED ***"
+    echo "The following packages require a reboot:"
+    if [ -f /var/run/reboot-required.pkgs ]; then
+        cat /var/run/reboot-required.pkgs
+    fi
+    REBOOT_REQUIRED=true
+elif [ -n "$KERNEL_UPDATE" ]; then
+    echo "*** REBOOT RECOMMENDED ***"
+    echo "Kernel was updated - reboot recommended for new kernel."
+    REBOOT_REQUIRED=true
+else
+    echo "No reboot required."
+fi
+
+# Offer reboot option if needed
+if [ "$REBOOT_REQUIRED" = true ]; then
+    echo
+    read -p "Would you like to reboot now? (y/N): " -n 1 -r
+    echo
+    if [[ $REPLY =~ ^[Yy]$ ]]; then
+        echo "Rebooting in 5 seconds... (Ctrl+C to cancel)"
+        sleep 5
+        reboot
+    else
+        echo "Please remember to reboot when convenient."
+    fi
+fi
+
+# Show system information after maintenance
+print_section "System information after maintenance"
+echo "Hostname: $(hostname)"
+echo "Debian version: $(cat /etc/debian_version)"
+echo "Kernel version: $(uname -r)"
+echo "Uptime: $(uptime -p)"
+echo "Memory usage:"
+free -h | head -2
+echo "Disk usage after cleanup:"
+df -h / | tail -1
+
+# Check for any remaining issues
+print_section "Final system check"
+echo "Checking for broken packages..."
+BROKEN_PACKAGES=$(dpkg --audit 2>/dev/null | wc -l)
+HELD_PACKAGES=$(apt-mark showhold | wc -l)
+
+if [ "$BROKEN_PACKAGES" -gt 0 ]; then
+    echo "WARNING: Found $BROKEN_PACKAGES broken packages."
+    echo "You may want to run: apt --fix-broken install"
+elif [ "$HELD_PACKAGES" -gt 0 ]; then
+    echo "INFO: $HELD_PACKAGES packages are held back."
+    echo "Run 'apt-mark showhold' to see held packages."
+else
+    echo "No broken packages detected."
+fi
+
+# Check for leftover config files
+LEFTOVER_CONFIGS=$(dpkg -l | grep "^rc" | wc -l)
+if [ "$LEFTOVER_CONFIGS" -gt 0 ]; then
+    echo "INFO: $LEFTOVER_CONFIGS packages have leftover config files."
+    echo "Run 'dpkg --purge \$(dpkg -l | grep \"^rc\" | awk '{print \$2}')' to clean them."
+fi
+
+# Show space freed
+SPACE_AFTER=$(df / | tail -1 | awk '{print $4}')
+SPACE_FREED=$((SPACE_AFTER - AVAILABLE_SPACE))
+if [ "$SPACE_FREED" -gt 0 ]; then
+    echo "Space freed: $(echo $SPACE_FREED | awk '{printf "%.1f MB", $1/1024}')"
+fi
+
+# Final timestamp
+echo
+echo "========================================"
+echo "Maintenance script completed successfully"
+echo "========================================"
+date
+
+========================================
+Starting Debian Maintenance Script
+========================================
+Mon Sep 29 09:16:01 AM EDT 2025
+
+
+----------------------------------------
+Checking disk space before maintenance
+----------------------------------------
+Mon Sep 29 09:16:01 AM EDT 2025
+Current disk usage:
+Filesystem                     Size  Used Avail Use% Mounted on
+/dev/mapper/colorado--vg-root  915G  534G  335G  62% /
+
+----------------------------------------
+Updating package lists
+----------------------------------------
+Mon Sep 29 09:16:01 AM EDT 2025
+Hit:1 http://security.debian.org/debian-security bookworm-security InRelease
+Hit:2 http://deb.debian.org/debian bookworm InRelease
+Hit:3 http://deb.debian.org/debian bookworm-updates InRelease
+Hit:4 https://packages.microsoft.com/debian/12/prod bookworm InRelease
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+All packages are up to date.
+
+----------------------------------------
+Checking for available upgrades
+----------------------------------------
+Mon Sep 29 09:16:03 AM EDT 2025
+Listing... Done
+
+----------------------------------------
+Upgrading all packages
+----------------------------------------
+Mon Sep 29 09:16:03 AM EDT 2025
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+----------------------------------------
+Performing full-upgrade
+----------------------------------------
+Mon Sep 29 09:16:04 AM EDT 2025
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+Calculating upgrade... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+----------------------------------------
+Removing unnecessary packages
+----------------------------------------
+Mon Sep 29 09:16:04 AM EDT 2025
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.
+
+----------------------------------------
+Cleaning package cache
+----------------------------------------
+Mon Sep 29 09:16:05 AM EDT 2025
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+
+----------------------------------------
+Updating Pi-hole gravity database
+----------------------------------------
+Mon Sep 29 09:16:05 AM EDT 2025
+Pi-hole not found - skipping Pi-hole update
+
+----------------------------------------
+Checking if reboot is required
+----------------------------------------
+Mon Sep 29 09:16:05 AM EDT 2025
+No reboot required.
+
+----------------------------------------
+System information after maintenance
+----------------------------------------
+Mon Sep 29 09:16:05 AM EDT 2025
+Hostname: colorado
+Debian version: 12.12
+Kernel version: 6.1.0-39-amd64
+Uptime: up 2 weeks, 23 hours, 35 minutes
+Memory usage:
+               total        used        free      shared  buff/cache   available
+Mem:           3.7Gi       666Mi       1.6Gi       1.7Mi       1.7Gi       3.1Gi
+Disk usage after cleanup:
+/dev/mapper/colorado--vg-root  915G  534G  335G  62% /
+
+----------------------------------------
+Final system check
+----------------------------------------
+Mon Sep 29 09:16:05 AM EDT 2025
+Checking for broken packages...
+No broken packages detected.
+INFO: 20 packages have leftover config files.
+Run 'dpkg --purge $(dpkg -l | grep "^rc" | awk '{print $2}')' to clean them.
+
+========================================
+Maintenance script completed successfully
+========================================
+Mon Sep 29 09:16:05 AM EDT 2025
+
+real    0m4.325s
+user    0m0.013s
+sys     0m0.000s
+Mon Sep 29 09:16:05 AM EDT 2025
+kushal@colorado:~$ nano ~/src/myhtml/angularnineteen.github.io/public/notes/2025/09/29/maintenance.txt
+kushal@colorado:~$
+

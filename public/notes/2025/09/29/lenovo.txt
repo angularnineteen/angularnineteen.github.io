@@ -1,0 +1,50 @@
+Lenovo ThinkPad P16s Gen4: 4K+ OLED Touch, Ryzen AI 7 350, 32GB DDR5, 1TB Gen4 SSD, Thunderbolt 4, Win11P @ $1239 + F/S
+
+Spec:
+
+    Windows 11 Pro
+    16" 3840x2400 400-nits Touch Anti-Reflection/Anti-Smudge OLED, 100% DCI-P3, Dolby Vision
+    Ryzen AI 7 350 8C/16T 2 GHz (5 GHz Boost, 8MB L2, 16MB L3 Cache)
+    AMD Radeon 860M Graphics (8 CU @ 3000 MHz)
+    32GB (16GBx2) DDR5-5600 MT/s Memory (2 Slots, 96GB Max)
+    1TB M.2 2280 PCIe Gen4 TLC OPAL SSD
+    Backlit Keyboard /w Number Pad
+    5MP RGB+IR Webcam with Dual Microphone and Privacy Shutter
+    2 x 2W speakers (user facing)
+    MediaTek Wi-Fi 7 MT7925 2x2 BE + Bluetooth 5.4Fingerprint Reader
+    Ports:
+        2x USB 4.0 Type-C Thunderbolt 4 /w Power Delivery 3.0, DisplayPort 1.4
+        2x USB-A 3.2 Gen 1 5 Gbps (1 Always On)
+        1x HDMI 2.1
+        1x Audio Combo Jack
+    100W USB-C Charger
+    86 WHr Battery
+
+https://www.lenovo.com/us/vipmembers/perksoffer/en/p/laptops/thinkpad/thinkpadp/thinkpad-p16s-gen-4-16-inch-amd-mobile-workstation/21qr001eus
+
+Lenovo ThinkPad T14s Gen 2 (Refurb): 14" FHD IPS Touch, i5-1145G7, NVIDIA T500, 16GB RAM, 256GB SSD, Win 11 Pro $293.49
+
+Sold by Newegg via eBay. [ebay.com]
+
+"1-year warranty: This item has a 1-year warranty serviced by Allstate."
+
+SPECS:
+
+    14" FHD (1920x1080) 16:9, 300-nits, 45% NTSC, Anti-glare, Touch, IPS Display
+    Intel Core i5-1145G7 (4C / 8T, 2.6 / 4.4GHz, 8MB)
+    16GB Soldered LPDDR4x-4266
+    256GB SSD M.2 2280 PCIe NVMe
+    Intel Wi-Fi 6 AX201, 11ax 2x2 + BT5.1
+    HD 720p with Privacy Shutter
+    Backlit, English Keyboard
+    57Whr Battery
+    1.36 kg (2.99 lbs.)
+    Ports:
+        1x USB 3.2 Gen 1
+        1x USB 3.2 Gen 1 (Always On)
+        2x USB-C 3.2 Gen 2 (support data transfer, Power Delivery and DisplayPort 1.4)
+        1x HDMI 2.0
+        1x Headphone / microphone combo jack (3.5mm)
+
+
+https://www.ebay.com/itm/297600210136
