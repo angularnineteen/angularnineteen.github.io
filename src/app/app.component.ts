@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.component';
 
@@ -323,6 +323,7 @@ import { StaleNewsCardComponent } from './stale-news-card/stale-news-card.compon
     </app-stale-news-card>
     <router-outlet></router-outlet>
   `,
+  changeDetection: ChangeDetectionStrategy.Eager,
   styles: [
     `
       /* Global Styles */
